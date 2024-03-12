@@ -1,0 +1,69 @@
+# /home/colombos/.config/tmuxinator/clopin.yml
+
+name: clopin
+root: ~/projects/work/clopin/clopin/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+on_project_first_start: docker-compose -f devutils/docker-compose.yaml up -d
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+on_project_exit: docker-compose -f devutils/docker-compose.yaml down
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - main: nvim .
+  - core-node:
+      layout: main-horizontal
+      panes:
+        - source core_venv/bin/activate && source core_venv/bin/envs.sh && python clopin/manage.py runserver
+        - source core_venv/bin/activate && source core_venv/bin/envs.sh && python clopin/manage.py shell
+        - source node_venv/bin/activate && source node_venv/bin/envs.sh
+  - repos:
+      layout: tiled
+      panes:
+        - cd ../test_repos && echo Clopin | figlet | lolcat
+        - cd ../configurations && echo Clopin | figlet | lolcat
+  - kube:
+      layout: tiled
+      panes:
+        - kubectl -n sec-clopin-production exec $(kubectl -n sec-clopin-production get po | grep api-sec-clopin | head -n 1 | awk '{print $1}') -it -- bash
+        - kubectl -n sec-clopin-production logs $(kubectl -n sec-clopin-production get po | grep api-sec-clopin | head -n 1 | awk '{print $1}') -f
+  - files2db:
+      layout: main-horizontal
+      panes:
+        - cd /home/colombos/projects/work/docs/files-2-db && nvim .
+        - cd /home/colombos/projects/work/docs/files-2-db

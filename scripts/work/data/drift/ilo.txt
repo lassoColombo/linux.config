@@ -1,0 +1,6 @@
+ircaspa-dmilog04.dmi.elmec.ad 172.22.22.111 443
+ircaspa-dmilog04.dmi.elmec.ad 172.22.22.110 443
+mazars-dmilog01.dmi.elmec.ad 10.39.255.42 443
+mazars-dmilog01.dmi.elmec.ad 10.39.255.42 443
+ircaspa-dmilog04.dmi.elmec.ad 172.22.22.111 443
+mazars-dmilog01.dmi.elmec.ad 10.39.255.42 443

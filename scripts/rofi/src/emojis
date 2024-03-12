@@ -1,0 +1,4 @@
+#!/bin/bash
+emoji=$(cat $HOME/.config/scripts/rofi/data/emojis/emojis.txt | rofi -dmenu -i -l 12 -p "( ͡° ͜ʖ ͡°)" -theme $HOME/.config/rofi/launchers/ssh/style.rasi | awk '{print $1}' | tr -d '\n')
+echo -n "$emoji" | xclip -selection clipboard
+pgrep -x dunst >/dev/null && notify-send --urgency=low "$emoji copied to clipboard"

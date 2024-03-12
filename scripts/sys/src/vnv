@@ -1,0 +1,6 @@
+#!/bin/bash
+
+venv=$(find . -type d -name "venv")
+echo $venv/bin/activate
+source "$venv/bin/activate"
+source "$venv/bin/envs.sh"

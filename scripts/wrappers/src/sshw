@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [[ ! "$*" == *"-L"* ]]; then
+	ssh "$@"
+	exit 0
+fi
+
+local_host=$(echo "$@" | grep -oP '@(\S+)' | awk -F@ '{print $2}')
+destination_host=$(echo "$@" | grep -oP '(\d+\.\d+\.\d+\.\d+)' | tail -n1)
+local_port=$(echo "$@" | grep -oP ':(\d+)' | tail -n1 | cut -c 2-)
+echo $local_host
+
+if [ "$local_port" -eq 8006 ]; then
+	log_file="$HOME/.config/scripts/data/drift/proxmoxw.txt"
+elif [ "$local_port" -eq 443 ]; then
+	log_file="$HOME/.config/scripts/data/drift/ilow.txt"
+else
+	echo "port $local_port is not recognized"
+	exit 1
+fi
+
+printf "%s %s %s\n" "$local_host" "$destination_host" "$local_port" >>"$log_file"
+
+ssh "$@"

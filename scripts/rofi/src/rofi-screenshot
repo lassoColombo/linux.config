@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# Screenshot directory
+screenshot_directory="/home/colombos/Pictures/Screenshots"
+
+# Default date format
+default_date_format="+%d-%m-%Y %H:%M:%S"
+
+notify() {
+	notify-send --app-name="screenshot" "Screenshot" "$1"
+}
+
+region_png() {
+	file_path="$screenshot_directory/$(date "+%d-%m-%Y %H:%M:%S").png"
+	scrot -s "$file_path"
+	xclip -selection clipboard -t image/png "$file_path"
+	notify "Saved image as $file_path and copied to clipboard"
+}
+
+screen_png() {
+	file_path="$screenshot_directory/$(date "+%d-%m-%Y %H:%M:%S").png"
+	scrot "$file_path"
+	xclip -selection clipboard -t image/png "$file_path"
+	notify-send --app-name="screenshot" "Screenshot" "Saved image as $file_path and copied to clipboard"
+}
+
+window_png() {
+	file_path="$screenshot_directory/$(date "+%d-%m-%Y %H:%M:%S").png"
+	scrot -u "$file_path"
+	xclip -selection clipboard -t image/png "$file_path"
+	notify-send --app-name="screenshot" "Screenshot" "Saved image as $file_path and copied to clipboard"
+}
+
+flameshot_gui() {
+	flameshot gui --path $screenshot_directory
+}
+
+get_options() {
+	echo "󰄀 PNG - Region"
+	echo "󰄀 PNG - Screen"
+	echo "󰄀 PNG - Window"
+	echo "󰄀 PNG - Flameshot gui"
+}
+
+main() {
+
+	choice=$( (get_options) | rofi -theme "$HOME"/.config/rofi/launchers/ssh/style.rasi -dmenu -i -fuzzy -p "Screenshot")
+
+	if [[ -z "${choice// /}" ]]; then
+		exit 1
+	fi
+
+	case $choice in
+	"󰄀 PNG - Region")
+		region_png
+		;;
+	"󰄀 PNG - Screen")
+		screen_png
+		;;
+	"󰄀 PNG - Window")
+		window_png
+		;;
+	"󰄀 PNG - Flameshot gui")
+		flameshot_gui
+		;;
+	esac
+
+	set -e
+}
+
+main "$@" &
+exit 0

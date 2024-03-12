@@ -1,0 +1,27 @@
+#!/bin/bash
+
+added=""
+
+for file in $HOME/.ssh/*; do
+	# Exclude files starting with "config"
+	if [[ $file == $HOME/.ssh/config* ]]; then
+		continue
+	fi
+
+	# Exclude files ending with ".pub"
+	if [[ $file == $HOME/.ssh/*.pub ]]; then
+		continue
+	fi
+
+	# Exclude files starting with "known_hosts"
+	if [[ $file == $HOME/.ssh/known_hosts* ]]; then
+		continue
+	fi
+
+	# echo $file
+	ssh-add $file 2>/dev/null
+	added+="$file"
+	added+=$'\n'
+done
+
+notify-send $'added the following keys:\n'"$added"

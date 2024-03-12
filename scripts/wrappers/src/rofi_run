@@ -1,0 +1,18 @@
+#!/bin/bash
+
+IFS_back="$IFS"
+IFS=":"
+choiches=""
+for dir in $PATH; do
+	for file in "$dir"/*; do
+		if [ -d "$file" ] || [ ! -x "$file" ]; then
+			continue
+		fi
+		choiches+="$file"$'\n'
+	done
+done
+IFS="$IFS_back"
+
+command=$(echo "$choiches" | rofi -dmenu -i -l 12 -p "runw" -theme $HOME/.config/rofi/launchers/ssh/style.rasi)
+
+eval "$command"

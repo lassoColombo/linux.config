@@ -1,0 +1,21 @@
+#!/bin/bash
+
+get_options() {
+	echo "emojis"
+	echo "asciimojis"
+}
+
+choice=$( (get_options) | rofi -theme "$HOME/.config/rofi/launchers/ssh/style.rasi" -dmenu -i -fuzzy -p "mojis")
+
+if [[ -z "${choice// /}" ]]; then
+	exit 0
+fi
+
+case $choice in
+"asciimojis")
+	~/.config/scripts/rofi/src/asciimoji
+	;;
+"emojis")
+	~/.config/scripts/rofi/src/emojis
+	;;
+esac

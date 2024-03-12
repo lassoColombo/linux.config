@@ -1,0 +1,53 @@
+#!/bin/bash
+
+find_available_port() {
+	start_port=4269
+	end_port=9000
+
+	for ((port = $start_port; port <= $end_port; port++)); do
+		if ! netstat -tnl | grep -q ":$port\b"; then
+			echo $port
+			return
+		fi
+	done
+
+	echo "No available ports in the specified range" >&2
+	exit 1
+}
+
+case "$1" in
+--proxmox)
+	prompt="🖥-proxmox"
+	drift_port=8006
+	ip_file="$HOME/.config/scripts/work/data/drift/proxmox.txt"
+	;;
+--ilo)
+	prompt="🖥-ilo"
+	drift_port=443
+	ip_file="$HOME/.config/scripts/work/data/drift/ilo.txt"
+	;;
+*)
+	echo "invalid option specified"
+	exit 1
+	;;
+esac
+
+selected=$(cat "$ip_file" | rofi -theme $HOME/.config/rofi/launchers/ssh/style.rasi -dmenu -i -l 10 -matching fuzzy -p $prompt)
+
+if [[ $selected == "" ]]; then
+	exit 0
+fi
+
+dmilog=$(echo "$selected" | cut -d ' ' -f1)
+drift=$(echo "$selected" | cut -d ' ' -f2)
+local_port=$(find_available_port)
+
+echo $dmilog
+echo $drift
+echo $local_port
+
+$TERMINAL -e "ssh $dmilog -L $local_port:$drift:$drift_port"
+
+sleep 2
+
+xdg-open https://127.0.0.1:"$local_port" 2>/dev/null &

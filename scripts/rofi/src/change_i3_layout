@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+get_options() {
+	echo "⬆️ vstack"
+	echo "➡️ hstak"
+	echo "🔃 spiral"
+	echo "2️⃣ 2columns"
+	echo "3️⃣ 3columns"
+	echo "🤝 companion"
+	echo "➗ autosplit"
+	echo "🙅 null"
+}
+
+main() {
+
+	choice=$( (get_options) | rofi -theme $HOME/.config/rofi/launchers/ssh/style.rasi -dmenu -i -fuzzy -p "i3 layout")
+
+	if [[ -z "${choice// /}" ]]; then
+		exit 1
+	fi
+
+	case $choice in
+	"⬆️ vstack")
+		param="vstack 0.65 right"
+		;;
+	"➡️ hstak")
+		param="hstack 0.8 down"
+		;;
+	"🔃 spiral")
+		param="spiral"
+		;;
+	"2️⃣ 2columns")
+		param="2columns"
+		;;
+	"3️⃣ 3columns")
+		param="3columns"
+		;;
+	"🤝 companion")
+		param="companion"
+		;;
+	"➗ autosplit")
+		param="autosplit"
+		;;
+	"🙅 null")
+		param="null"
+		;;
+	esac
+
+	i3l "$param"
+	echo $param
+}
+
+main "$@" &
+
+exit 0
