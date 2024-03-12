@@ -49,14 +49,24 @@ windows:
       layout: main-horizontal
       panes:
         - lazygit
-        - echo .Config | figlet | lolcat
+        - echo dotfiles | figlet | lolcat
   - tmux:
       layout: main-horizontal
       panes:
         - cd tmux && nvim .
         - cd tmux
+  - tmuxinator:
+      layout: main-horizontal
+      panes:
+        - cd tmuxinator && nvim .
+        - cd tmuxinator
   - nvim:
       layout: main-horizontal
       panes:
         - cd nvim && nvim .
         - cd nvim
+  - kitty:
+      layout: main-horizontal
+      panes:
+        - cd kitty && nvim .
+        - cd kitty
