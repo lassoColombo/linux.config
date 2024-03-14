@@ -50,6 +50,11 @@ windows:
       panes:
         - lazygit
         - echo dotfiles | figlet | lolcat
+  - nvim:
+      layout: main-horizontal
+      panes:
+        - cd nvim && nvim .
+        - cd nvim
   - tmux:
       layout: main-horizontal
       panes:
@@ -60,13 +65,9 @@ windows:
       panes:
         - cd tmuxinator && nvim .
         - cd tmuxinator
-  - nvim:
-      layout: main-horizontal
-      panes:
-        - cd nvim && nvim .
-        - cd nvim
   - kitty:
       layout: main-horizontal
       panes:
         - cd kitty && nvim .
         - cd kitty
+  - misc: main-horizontal
