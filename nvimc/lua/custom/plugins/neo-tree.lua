@@ -29,6 +29,9 @@ return {
       end,
     },
   },
+  keys = {
+    { '<leader>t', '<cmd>Neotree toggle<cr>', desc = 'Toggle File [T]ree' },
+  },
   opts = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
     vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })

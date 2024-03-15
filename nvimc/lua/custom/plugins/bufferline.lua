@@ -1,8 +1,13 @@
 return {
   'akinsho/bufferline.nvim',
   dependencies = 'kyazdani42/nvim-web-devicons',
-  opts = function()
-    vim.keymap.set('n', 'L', '<cmd>BufferLineCycleNext<CR>', { desc = 'Next buffer' })
-    vim.keymap.set('n', 'H', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Previous buffer' })
-  end,
+  keys = {
+    { 'L', '<cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
+    { 'H', '<cmd>BufferLineCyclePrev<CR>', desc = 'Previous buffer' },
+    -- { '<leader>b]', '<cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
+    -- { '<leader>b[', '<cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
+  },
+  -- opts = function ()
+  --  return {}
+  -- end
 }

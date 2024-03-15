@@ -1,5 +1,6 @@
 require 'custom.opts'
 require 'custom.keymaps'
+require 'custom.autocmds'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -12,10 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 
 --  To check the current status of your plugins, run
 --    :Lazy
---
 --  To update plugins, you can run
 --    :Lazy update
---
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   { import = 'custom.plugins' },
