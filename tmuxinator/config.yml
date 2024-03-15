@@ -46,27 +46,27 @@ root: ~/.config/
 
 windows:
   - home:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - lazygit
         - echo dotfiles | figlet | lolcat
   - nvim:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - cd nvim && nvim .
         - cd nvim
   - tmux:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - cd tmux && nvim .
         - cd tmux
   - tmuxinator:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - cd tmuxinator && nvim .
         - cd tmuxinator
   - kitty:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - cd kitty && nvim .
         - cd kitty

@@ -46,13 +46,13 @@ root: ~/projects/work/traho/
 
 windows:
   - editor:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - cd trahoproject && nvim .
         - cd trahoproject && source venv/bin/envs.sh && source venv/bin/activate
   - kube:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
         - cd trahoproject && echo Traho | figlet | lolcat
         - cd trahoproject && echo Traho | figlet | lolcat
-  - ansibles: cd /home/colombos/projects/work/traho/traho-ansibles && echo Traho | figlet | lolcat
+  - ansibles: cd /home/colombos/projects/work/traho/traho-ansibles && nvim .

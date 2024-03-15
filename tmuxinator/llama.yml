@@ -46,7 +46,7 @@ root: ~/projects/work/llama/llama_project/
 
 windows:
   - editor:
-      layout: main-horizontal
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       # Synchronize all panes of this window, can be enabled before or after the pane commands run.
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
