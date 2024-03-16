@@ -52,7 +52,7 @@ floating_modifier Mod1
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym Mod1+Return exec kitty
+bindsym Mod1+Return exec terminator
 
 
 # kill focused window
@@ -221,5 +221,5 @@ client.unfocused        #000000 #000000 #888888 #292d2e   #000022
 client.urgent           #2f343a #900000 #EDF8FF #900000   #900000
 client.placeholder      #000000 #0c0c0c #EDF8FF #000000   #0c0c0c
 
-exec --no-startup-id i3-msg 'workspace 1:shell; exec /usr/bin/kitty'
+exec --no-startup-id i3-msg 'workspace 1:shell; exec /usr/bin/terminator'
 exec --no-startup-id i3-msg 'workspace 2:bowser; exec /usr/bin/google-chrome-stable'

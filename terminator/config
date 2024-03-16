@@ -1,0 +1,41 @@
+[global_config]
+  window_state = maximise
+  inactive_color_offset = 0.7560975609756098
+  suppress_multiple_term_dialog = True
+[keybindings]
+
+  resize_up = None
+  resize_down = None
+  resize_left = None
+  resize_right = None
+
+  go_up = None
+  go_down = None
+  go_left = None
+  go_right = None
+
+
+
+[profiles]
+  [[default]]
+    background_darkness = 1
+    background_type = transparent
+    background_color = "#1a1b26"
+    cursor_color = "#aaaaaa"
+    font = MesloLGS NFM 11
+    foreground_color = "#c0caf5"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 5000
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
