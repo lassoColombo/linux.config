@@ -65,11 +65,11 @@ windows:
       panes:
         - cd tmuxinator && nvim .
         - cd tmuxinator
-  - kitty:
+  - terminator:
       layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
-        - cd kitty && nvim .
-        - cd kitty
+        - cd terminator && nvim .
+        - cd terminator
   - scripts:
       layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
