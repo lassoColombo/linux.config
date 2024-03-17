@@ -55,6 +55,11 @@ windows:
       panes:
         - cd nvim && nvim .
         - cd nvim
+  - oh-my:
+      layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
+      panes:
+        - cd oh-my-zsh/custom && nvim .
+        - cd oh-my-zsh/custom
   - tmux:
       layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
       panes:
@@ -75,4 +80,3 @@ windows:
       panes:
         - cd scripts && nvim .
         - cd scripts
-  - misc: main-horizontal
