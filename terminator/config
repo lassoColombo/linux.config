@@ -1,7 +1,8 @@
 [global_config]
   window_state = maximise
   inactive_color_offset = 0.7560975609756098
-  suppress_multiple_term_dialog = True
+  suppress_multiple_term_dialog = False
+  smart copy = True
 [keybindings]
 
   resize_up = None
@@ -28,6 +29,7 @@
     foreground_color = "#a9b1d6"
     palette = "#1a1b26:#f7768e:#9ece6a:#e0af68:#7aa2f7:#9a7ecc:#4abaaf:#acb0d0:#4e5173:#f7768e:#9ece6a:#e0af68:#7aa2f7:#9a7ecc:#4abaaf:#acb0d0"
     use_system_font = False
+    copy on selection = False
 [layouts]
   [[default]]
     [[[window0]]]
