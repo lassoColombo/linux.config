@@ -1,6 +1,6 @@
 # /home/colombos/.config/tmuxinator/llama.yml
 
-name: llama
+name: 🦙llama
 root: ~/projects/work/llama/llama_project/
 
 # Optional tmux socket
@@ -47,9 +47,11 @@ root: ~/projects/work/llama/llama_project/
 windows:
   - editor:
       layout: 969d,380x69,0,0[380x55,0,0,4,380x13,0,56,10]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
       panes:
         - nvim .
+        - echo Llama | figlet | lolcat
+  - kube:
+      layout: main-vertical
+      panes:
+        - echo Llama | figlet | lolcat
         - echo Llama | figlet | lolcat

@@ -1,6 +1,6 @@
 # /home/colombos/.config/tmuxinator/traho.yml
 
-name: traho
+name: 🛒traho
 root: ~/projects/work/traho/
 
 # Optional tmux socket

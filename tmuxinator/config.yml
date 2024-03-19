@@ -1,6 +1,6 @@
 # /home/colombos/.config/tmuxinator/config.yml
 
-name: config
+name: 🛠️config
 root: ~/.config/
 
 # Optional tmux socket

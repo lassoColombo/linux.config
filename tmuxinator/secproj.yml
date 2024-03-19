@@ -1,6 +1,6 @@
 # /home/colombos/.config/tmuxinator/secproj.yml
 
-name: secproj
+name: 🛡️secproj
 root: ~/projects/work/securityproject/
 
 # Optional tmux socket

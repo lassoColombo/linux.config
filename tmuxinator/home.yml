@@ -1,6 +1,6 @@
 # /home/colombos/.config/tmuxinator/home.yml
 
-name: home
+name: 🏠home
 root: ~/
 
 # Optional tmux socket

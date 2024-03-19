@@ -1,6 +1,6 @@
 # /home/colombos/.config/tmuxinator/monitoring.yml
 
-name: monitoring-cust
+name: 🖥️monitoring-cust
 root: ~/projects/work/monitoring/dmilog-cust-monitoring/
 
 # Optional tmux socket
