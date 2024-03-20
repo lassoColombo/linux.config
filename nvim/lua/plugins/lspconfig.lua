@@ -88,6 +88,10 @@ return {
       },
       marksman = {},
       jsonls = {
+        -- :NOTE: don't know why .lst file types are detected as .asm
+        filetypes = { "yaml", "yml", "lst", "asm" },
+        autostart = true,
+        --
         -- lazy-load schemastore when needed
         on_new_config = function(new_config)
           new_config.settings.json.schemas = new_config.settings.json.schemas or {}
