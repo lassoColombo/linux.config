@@ -8,14 +8,14 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, { desc = '[L]ine [D]iagnostics' })
 
 -- Buffer keymaps
 -- save buffer
-vim.keymap.set('n', '<leader>bs', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
+vim.keymap.set('n', '<leader>bw', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
-vim.keymap.set('n', '<leader>bd', '<cmd>bd<CR>', { desc = '[B]buffer [D]elete' })
+vim.keymap.set('n', '<leader>ww', '<cmd>wa<CR>', { desc = '[W]orkspace [W]rite' })
+-- vim.keymap.set('n', '<leader>bd', '<cmd>bd<CR>', { desc = '[B]buffer [D]elete' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -44,5 +44,5 @@ vim.keymap.set('n', '<C-right>', '<cmd>vertical resize +5<CR>', { desc = 'Move f
 vim.keymap.set('n', '<C-left>', '<cmd>vertical resize -5<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-up>', '<cmd>horizontal resize +3<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-down>', '<cmd>horizontal resize -3<CR>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<leader>wd', '<cmd>close<CR>', { desc = '[W]indow [D]elete' })
+vim.keymap.set('n', '<leader>wc', '<cmd>close<CR>', { desc = '[W]indow [C]lose' })
 

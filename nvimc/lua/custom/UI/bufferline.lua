@@ -1,4 +1,5 @@
 return {
+  event = 'VimEnter',
   'akinsho/bufferline.nvim',
   dependencies = 'kyazdani42/nvim-web-devicons',
   keys = {
@@ -7,7 +8,7 @@ return {
     -- { '<leader>b]', '<cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
     -- { '<leader>b[', '<cmd>BufferLineCycleNext<CR>', desc = 'Next buffer' },
   },
-  -- opts = function ()
-  --  return {}
-  -- end
+  opts = function()
+    return {}
+  end,
 }

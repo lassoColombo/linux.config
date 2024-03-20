@@ -62,10 +62,10 @@ return { -- Autocompletion
         --  Generally you don't need this, because nvim-cmp will display
         --  completions whenever it has completion options available.
         ['<C-Space>'] = cmp.mapping.complete {},
-
+        ['<C-e>'] = cmp.mapping.abort(),
         -- Think of <c-l> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:
-        --  function $name($args)
+        --  function $name($args),
         --    $body
         --  end
         --
@@ -85,7 +85,8 @@ return { -- Autocompletion
       sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'path' },
+        { name = 'hrsh7th/cmp-path' },
+        { name = 'hrsh7th/cmp-buffer' },
       },
     }
   end,

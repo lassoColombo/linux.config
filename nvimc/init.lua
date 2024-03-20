@@ -1,3 +1,4 @@
+require 'custom.globals'
 require 'custom.opts'
 require 'custom.keymaps'
 require 'custom.autocmds'
@@ -17,17 +18,19 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  { import = 'custom.plugins' },
+  { import = 'custom.UI' },
+  { import = 'custom.utils' },
+  { import = 'custom.coding' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
+      cmd = '👮',
       config = '🛠',
       event = '📅',
       ft = '📂',
-      init = '⚙',
+      init = '▶️',
       keys = '🗝',
       plugin = '🔌',
       runtime = '💻',

@@ -34,17 +34,17 @@ return {
   },
   opts = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-    vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
-    vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
-    vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
-    vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
+    vim.fn.sign_define('DiagnosticSignError', { text = vim.g.diagnostics_error_symbol, texthl = 'DiagnosticSignError' })
+    vim.fn.sign_define('DiagnosticSignWarn', { text = vim.g.diagnostics_warning_symbol, texthl = 'DiagnosticSignWarn' })
+    vim.fn.sign_define('DiagnosticSignInfo', { text = vim.g.diagnostics_info_symbol, texthl = 'DiagnosticSignInfo' })
+    vim.fn.sign_define('DiagnosticSignHint', { text = vim.g.diagnostics_info_symbol, texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup {
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
-      enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
+      -- enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
       sort_case_insensitive = false, -- used when sorting files and directories in the tree
       sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -88,22 +88,22 @@ return {
         },
         name = {
           trailing_slash = false,
-          use_git_status_colors = true,
+          use_git_status_colors = false,
           highlight = 'NeoTreeFileName',
         },
         git_status = {
           symbols = {
             -- Change type
-            added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = '✖', -- this can only be used in the git_status source
-            renamed = '󰁕', -- this can only be used in the git_status source
+            added = vim.g.git_add_symbol, -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified = vim.g.git_change_symbol, -- or "", but this is redundant info if you use git_status_colors on the name
+            deleted = vim.g.git_delete_symbol, -- this can only be used in the git_status source
+            renamed = vim.g.git_renamed_symbol, -- this can only be used in the git_status source
             -- Status type
-            untracked = '',
-            ignored = '',
-            unstaged = '󰄱',
-            staged = '',
-            conflict = '',
+            untracked = vim.g.git_untracked_symbol,
+            ignored = vim.g.git_ignored_symbol,
+            unstaged = vim.g.git_unstaged_symbol,
+            staged = vim.g.git_staged_symbol,
+            conflict = vim.g.git_conflict_symbol,
           },
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
