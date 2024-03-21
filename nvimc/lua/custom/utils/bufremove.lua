@@ -1,5 +1,5 @@
 return { -- Collection of various small independent plugins/modules
-  'echasnovski/mini.nvim',
+ 'echasnovski/mini.bufremove', version = false,
   keys = {
     {
       "<leader>bc",
@@ -23,8 +23,6 @@ return { -- Collection of various small independent plugins/modules
     { "<leader>bC", function() require("mini.bufremove").delete(0, true) end, desc = "[B]uffer [C]lose force" },
   },
   config = function()
-    -- Better Around/Inside textobjects
-    require('mini.ai').setup { n_lines = 500 }
     -- Add/delete/replace surroundings (brackets, quotes, etc.)
     require('mini.surround').setup()
     -- require('mini.indentscope').setup()

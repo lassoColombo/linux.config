@@ -2,7 +2,6 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = function()
-    -- PERF: we don't need this lualine require madness 🤷
     local lualine_require = require 'lualine_require'
     lualine_require.require = require
 
@@ -32,13 +31,8 @@ return {
             'filename',
             file_status = false, -- Displays file status (readonly status, modified status)
             newfile_status = false, -- Display new file status (new file means no write after created)
-            path = 1, -- 0: Just the filename
-            -- 1: Relative path
-            -- 2: Absolute path
-            -- 3: Absolute path, with tilde as the home directory
-            -- 4: Filename and parent dir, with tilde as the home directory
+            path = 1, -- 0: Just the filename 1: Relative path 2: Absolute path 3: Absolute path, with tilde as the home directory 4: Filename and parent dir, with tilde as the home directory
             shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-            -- for other components. (terrible name, any suggestions?)
             symbols = {
               modified = '[+]', -- Text to show when the file is modified.
               readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
@@ -60,28 +54,24 @@ return {
           cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
         },
         -- stylua: ignore
-          {
-            require('lazy.status').updates,
-            cond = require('lazy.status').has_updates,
+        {
+          'diff',
+          symbols = {
+            added = vim.g.git_add_symbol,
+            modified = vim.g.git_change_symbol,
+            removed = vim.g.git_delete_symbol,
           },
-          {
-            'diff',
-            symbols = {
-              added = vim.g.git_add_symbol,
-              modified = vim.g.git_change_symbol,
-              removed = vim.g.git_delete_symbol,
-            },
-            source = function()
-              local gitsigns = vim.b.gitsigns_status_dict
-              if gitsigns then
-                return {
-                  added = gitsigns.added,
-                  modified = gitsigns.changed,
-                  removed = gitsigns.removed,
-                }
-              end
-            end,
-          },
+          source = function()
+            local gitsigns = vim.b.gitsigns_status_dict
+            if gitsigns then
+              return {
+                added = gitsigns.added,
+                modified = gitsigns.changed,
+                removed = gitsigns.removed,
+              }
+            end
+          end,
+        },
         },
         lualine_y = {
           { 'progress', separator = ' ', padding = { left = 1, right = 0 } },

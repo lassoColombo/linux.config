@@ -18,9 +18,9 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  { import = 'custom.UI' },
   { import = 'custom.utils' },
   { import = 'custom.coding' },
+  { import = 'custom.UI' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the

@@ -6,7 +6,7 @@ vim.g.diagnostics_other_symbol = '🌈'
 
 vim.g.git_add_symbol = '+'
 vim.g.git_change_symbol = '~'
-vim.g.git_delete_symbol = '_'
+vim.g.git_delete_symbol = '-'
 vim.g.git_todelete_symbol = '‾'
 vim.g.git_changedelete_symbol = '~'
 vim.g.git_renamed_symbol = '󰁕'

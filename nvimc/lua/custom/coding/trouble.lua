@@ -24,8 +24,8 @@ return {
     icons = true, -- use devicons for filenames
     mode = 'workspace_diagnostics', -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
     severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
-    fold_open = '📂', -- icon used for open folds
-    fold_closed = '📁', -- icon used for closed folds
+    fold_open = '', -- icon used for open folds
+    fold_closed = '', -- icon used for closed folds
     group = true, -- group results by file
     padding = true, -- add an extra new line on top of the list
     cycle_results = true, -- cycle item list when reaching beginning or end of list

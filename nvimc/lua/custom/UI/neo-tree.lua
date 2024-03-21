@@ -1,6 +1,3 @@
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
-
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
@@ -8,43 +5,23 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
-    '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
-    {
-      's1n7ax/nvim-window-picker',
-      version = '2.*',
-      opts = function()
-        require('window-picker').setup {
-          filter_rules = {
-            include_current_win = false,
-            autoselect_one = true,
-            -- filter using buffer options
-            bo = {
-              -- if the file type is one of following, the window will be ignored
-              filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
-              -- if the buffer type is one of following, the window will be ignored
-              buftype = { 'terminal', 'quickfix' },
-            },
-          },
-        }
-      end,
-    },
+    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   keys = {
-    { '<leader>t', '<cmd>Neotree toggle<cr>', desc = 'Toggle File [T]ree' },
+    { '<leader>T', '<cmd>Neotree toggle<cr>', desc = 'Toggle File [T]ree' },
   },
-  opts = function()
+  config = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
     vim.fn.sign_define('DiagnosticSignError', { text = vim.g.diagnostics_error_symbol, texthl = 'DiagnosticSignError' })
     vim.fn.sign_define('DiagnosticSignWarn', { text = vim.g.diagnostics_warning_symbol, texthl = 'DiagnosticSignWarn' })
     vim.fn.sign_define('DiagnosticSignInfo', { text = vim.g.diagnostics_info_symbol, texthl = 'DiagnosticSignInfo' })
-    vim.fn.sign_define('DiagnosticSignHint', { text = vim.g.diagnostics_info_symbol, texthl = 'DiagnosticSignHint' })
+    vim.fn.sign_define('DiagnosticSignHint', { text = vim.g.diagnostics_hint_symbol, texthl = 'DiagnosticSignHint' })
 
     require('neo-tree').setup {
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = 'rounded',
       enable_git_status = true,
       enable_diagnostics = true,
-      -- enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' }, -- when opening files, do not use windows containing these filetypes or buftypes
       sort_case_insensitive = false, -- used when sorting files and directories in the tree
       sort_function = nil, -- use a custom function for sorting files and directories in the tree
@@ -79,7 +56,7 @@ return {
           folder_empty = '󰜌',
           -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
           -- then these will never be used.
-          default = '*',
+          default = '👾',
           highlight = 'NeoTreeFileIcon',
         },
         modified = {
@@ -88,22 +65,22 @@ return {
         },
         name = {
           trailing_slash = false,
-          use_git_status_colors = false,
+          use_git_status_colors = true,
           highlight = 'NeoTreeFileName',
         },
         git_status = {
           symbols = {
             -- Change type
-            added = vim.g.git_add_symbol, -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified = vim.g.git_change_symbol, -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted = vim.g.git_delete_symbol, -- this can only be used in the git_status source
-            renamed = vim.g.git_renamed_symbol, -- this can only be used in the git_status source
+            added = '', -- or "✚", but this is redundant info if you use git_status_colors on the name
+            modified = '', -- or "", but this is redundant info if you use git_status_colors on the name
+            deleted = '', -- this can only be used in the git_status source
+            renamed = '', -- this can only be used in the git_status source
             -- Status type
-            untracked = vim.g.git_untracked_symbol,
-            ignored = vim.g.git_ignored_symbol,
-            unstaged = vim.g.git_unstaged_symbol,
-            staged = vim.g.git_staged_symbol,
-            conflict = vim.g.git_conflict_symbol,
+            untracked = '',
+            ignored = '',
+            unstaged = '',
+            staged = '',
+            conflict = '',
           },
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
@@ -144,8 +121,8 @@ return {
             nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
           },
           ['<2-LeftMouse>'] = 'open',
-          ['<cr>'] = 'open',
           ['L'] = 'open',
+          ['<cr>'] = 'open',
           ['<esc>'] = 'cancel', -- close preview or floating neo-tree window
           ['P'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
           -- Read `# Preview Mode` for more information
@@ -162,7 +139,7 @@ return {
           ['C'] = 'close_node',
           -- ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
-          --["Z"] = "expand_all_nodes",
+          ['Z'] = 'expand_all_nodes',
           ['a'] = {
             'add',
             -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
