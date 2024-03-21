@@ -34,6 +34,7 @@ vim.keymap.set('n', '<leader>ww', '<cmd>wa<CR>', { desc = '[W]orkspace [W]rite' 
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<leader>|', '<cmd>vsplit<CR>', { desc = 'Split window vertically' })
 vim.keymap.set('n', '<leader>-', '<cmd>hsplit<CR>', { desc = 'Split window horizontally' })
+vim.keymap.set('n', '<leader>C', '<cmd>close<CR>', { desc = '[C]lose window' })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
@@ -42,9 +43,8 @@ vim.keymap.set('n', '<C-right>', '<cmd>vertical resize +5<CR>', { desc = 'Move f
 vim.keymap.set('n', '<C-left>', '<cmd>vertical resize -5<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-up>', '<cmd>horizontal resize +3<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-down>', '<cmd>horizontal resize -3<CR>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<leader>wc', '<cmd>close<CR>', { desc = '[W]indow [C]lose' })
 
-vim.keymap.set('n', '<leader>uw', function()
+vim.keymap.set('n', '<leader>tw', function()
   vim.wo.wrap = not vim.wo.wrap
   vim.notify('set line wrap to ' .. tostring(vim.wo.wrap), vim.log.levels.WARN)
-end, { desc = '[U]i toggle [W]rap' })
+end, { desc = '[T]oggle [W]rap' })

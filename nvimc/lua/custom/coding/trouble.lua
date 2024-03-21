@@ -10,11 +10,11 @@ return {
       desc = '[W]orkspace [D]iagnostics',
     },
     {
-      '<leader>dd',
+      '<leader>bd',
       function()
         require('trouble').toggle 'document_diagnostics'
       end,
-      desc = '[D]ocument [D]iagnostics',
+      desc = '[B]uffer [D]iagnostics',
     },
   },
   opts = {

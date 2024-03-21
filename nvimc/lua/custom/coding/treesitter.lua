@@ -1,5 +1,10 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-context',
+  },
+  event = { 'BufReadPre', 'BufNewFile' },
   build = ':TSUpdate',
   config = function()
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -14,7 +19,7 @@ return { -- Highlight, edit, and navigate code
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = '<leader>tv', -- set to `false` to disable one of the mappings
+          init_selection = '<leader>cv', -- set to `false` to disable one of the mappings
           node_incremental = 'gn',
           scope_incremental = 'gs',
           node_decremental = 'gN',
