@@ -4,6 +4,20 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = true,
+  underline = false,
+  update_in_insert = false,
+  severity_sort = false,
+}
+
+local signs = { Error = '❗', Warn = '❕', Hint = '🕯', Info = '🔎' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 -- Set to true if you have termguicolors
@@ -19,6 +33,8 @@ vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
+-- wrap lines
+vim.wo.wrap = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -67,4 +83,5 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
-vim.wo.wrap = false
+-- global and buffer disable_autoformat
+vim.g.autoformat_on_save = true

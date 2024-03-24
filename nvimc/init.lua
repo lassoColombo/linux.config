@@ -1,6 +1,6 @@
-require 'custom.globals'
 require 'custom.opts'
 require 'custom.keymaps'
+require 'custom.globals'
 require 'custom.autocmds'
 
 -- [[ Install `lazy.nvim` plugin manager ]]

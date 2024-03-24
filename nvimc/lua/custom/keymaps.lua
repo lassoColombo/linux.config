@@ -3,7 +3,7 @@
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', "<cmd>execute 'nohlsearch | NoiceDismiss'<CR>")
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -14,6 +14,8 @@ vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = '[C]ode (l
 vim.keymap.set('n', '<leader>bw', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set('n', '<leader>ww', '<cmd>wa<CR>', { desc = '[W]orkspace [W]rite' })
+vim.keymap.set('n', '<leader>wc', '<cmd>qa<CR>', { desc = '[W]orkspace [C]lose' })
+vim.keymap.set('n', '<leader>wC', '<cmd>qa!<CR>', { desc = '[W]orkspace [C]lose' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -34,7 +36,7 @@ vim.keymap.set('n', '<leader>ww', '<cmd>wa<CR>', { desc = '[W]orkspace [W]rite' 
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<leader>|', '<cmd>vsplit<CR>', { desc = 'Split window vertically' })
 vim.keymap.set('n', '<leader>-', '<cmd>hsplit<CR>', { desc = 'Split window horizontally' })
-vim.keymap.set('n', '<leader>C', '<cmd>close<CR>', { desc = '[C]lose window' })
+vim.keymap.set('n', '<leader>W', '<cmd>close<CR>', { desc = '[W]indow close' })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
@@ -44,7 +46,42 @@ vim.keymap.set('n', '<C-left>', '<cmd>vertical resize -5<CR>', { desc = 'Move fo
 vim.keymap.set('n', '<C-up>', '<cmd>horizontal resize +3<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-down>', '<cmd>horizontal resize -3<CR>', { desc = 'Move focus to the lower window' })
 
+-- toggle keymaps
+-- toggle word wrap
 vim.keymap.set('n', '<leader>tw', function()
   vim.wo.wrap = not vim.wo.wrap
   vim.notify('set line wrap to ' .. tostring(vim.wo.wrap), vim.log.levels.WARN)
 end, { desc = '[T]oggle [W]rap' })
+
+-- toggle line relativeness
+vim.keymap.set('n', '<leader>tl', function()
+  vim.opt.relativenumber = not vim.opt.relativenumber
+  local log_level = (vim.opt.relativenumber and vim.log.levels.INFO or vim.log.levels.WARN)
+  vim.notify('set line wrap to ' .. tostring(vim.opt.relativenumber), log_level)
+end, { desc = '[T]oggle relative [L]ines' })
+
+-- toggle lines
+vim.keymap.set('n', '<leader>tL', function()
+  vim.opt.number = not vim.opt.number
+  local log_level = (vim.opt.number and vim.log.levels.INFO or vim.log.levels.WARN)
+  vim.notify('set line wrap to ' .. tostring(vim.opt.number), log_level)
+end, { desc = '[T]oggle [L]ines' })
+
+-- toggle diagnostics
+vim.keymap.set('n', '<leader>td', function()
+  if vim.diagnostic.is_disabled() then
+    vim.diagnostic.enable()
+  else
+    vim.diagnostic.disable()
+  end
+  local is_disabled = vim.diagnostic.is_disabled()
+  local log_level = (is_disabled and vim.log.levels.WARN or vim.log.levels.INFO)
+  vim.notify('set diagnostics to ' .. tostring(not is_disabled), log_level)
+end, { desc = '[T]oggle [D]iagnostics' })
+
+-- toggle lines
+vim.keymap.set('n', '<leader>tL', function()
+  vim.opt.number = not vim.opt.number
+  local log_level = (vim.opt.number and vim.log.levels.INFO or vim.log.levels.WARN)
+  vim.notify('set line wrap to ' .. tostring(vim.opt.number), log_level)
+end, { desc = '[T]oggle [L]ines' })

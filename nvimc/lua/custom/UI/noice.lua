@@ -9,6 +9,7 @@ return {
     --   If not available, we use `mini` as the fallback
     'rcarriga/nvim-notify',
   },
+  keys = {},
   opts = function()
     return {
       lsp = {

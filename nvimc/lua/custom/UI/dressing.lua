@@ -1,4 +1,4 @@
 return {
-  -- ui popups
-  { 'stevearc/dressing.nvim', opts = {} },
+  'stevearc/dressing.nvim',
+  opts = {},
 }

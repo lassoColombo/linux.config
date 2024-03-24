@@ -13,6 +13,7 @@ return {
         alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, -- a set of other keywords that all map to this FIX keywords
         -- signs = false, -- configure signs for some keywords individually
       },
+
       TODO = { icon = vim.g.diagnostics_hint_symbol, color = 'info' },
       HACK = { icon = '🔥', color = 'warning' },
       WARN = { icon = vim.g.diagnostics_warning_symbol, color = 'warning', alt = { 'WARNING', 'XXX' } },
@@ -68,6 +69,6 @@ return {
   },
   keys = {
     { '<leader>st', '<cmd>TodoTelescope<cr>', desc = '[S]earch [T]odos' },
-    { '<leader>wt', '<cmd>TodoTrouble<cr>', desc = '[w]orkspace [T]odos' },
+    { '<leader>sT', '<cmd>TodoTelescope keywords=WARN,FIX<cr>', desc = '[S]earch [T]odos (errors|warnings)' },
   },
 }

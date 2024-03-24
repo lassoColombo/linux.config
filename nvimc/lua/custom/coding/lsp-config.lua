@@ -122,6 +122,57 @@ return { -- LSP Configuration & Plugins
       -- tsserver = {},
       --
 
+      jsonls = {
+        -- lazy-load schemastore when needed
+        on_new_config = function(new_config)
+          new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+          vim.list_extend(new_config.settings.json.schemas, require('schemastore').json.schemas())
+        end,
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = { enable = true },
+          },
+        },
+      },
+
+      pyright = {},
+
+      yamlls = {
+        -- Have to add this for yamlls to understand that we support line folding
+        capabilities = {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = false,
+              lineFoldingOnly = true,
+            },
+          },
+        },
+        -- lazy-load schemastore when needed
+        on_new_config = function(new_config)
+          new_config.settings.yaml.schemas = vim.tbl_deep_extend('force', new_config.settings.yaml.schemas or {}, require('schemastore').yaml.schemas())
+        end,
+        settings = {
+          redhat = { telemetry = { enabled = false } },
+          yaml = {
+            keyOrdering = false,
+            format = {
+              enable = true,
+            },
+            validate = true,
+            schemaStore = {
+              -- Must disable built-in schemaStore support to use
+              -- schemas from SchemaStore.nvim plugin
+              enable = false,
+              -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+              url = '',
+            },
+          },
+        },
+      },
+
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -157,13 +208,24 @@ return { -- LSP Configuration & Plugins
     --
     --  You can press `g?` for help in this menu
     require('mason').setup()
+    vim.keymap.set('n', '<leader>cm', '<cmd>Mason<CR>', { desc = '[C]ode [M]ason' })
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format lua code
-      'black', -- Used to format python code
+      -- lua
+      'lua_ls', -- LS
+      'stylua', -- formatter
+      -- python
+      'pyright', -- LS
+      'black', -- formatter
+      -- yaml
+      'yamlls', -- LS
+      'prettier', -- formatter
+      -- json
+      'jsonls', -- LS
+      -- 'prettier', -- formatter -- :NOTE: already included in yaml section
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -21,10 +21,10 @@ return {
           {
             'diagnostics',
             symbols = {
-              error = vim.g.diagnostics_error_symbol,
-              warn = vim.g.diagnostics_warning_symbol,
-              info = vim.g.diagnostics_hint_symbol,
-              hint = vim.g.diagnostics_info_symbol,
+              error = '❗',
+              warn = '❕',
+              info = '🔎',
+              hint = '🕯',
             },
           },
           {

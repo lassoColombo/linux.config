@@ -1,3 +1,5 @@
+P = vim.inspect
+
 vim.g.diagnostics_error_symbol = '🚨'
 vim.g.diagnostics_warning_symbol = '⚠️'
 vim.g.diagnostics_hint_symbol = '🕯'
@@ -15,8 +17,3 @@ vim.g.git_ignored_symbol = ''
 vim.g.git_unstaged_symbol = '󰄱'
 vim.g.git_staged_symbol = ''
 vim.g.git_conflict_symbol = ''
-
-
-
-
-

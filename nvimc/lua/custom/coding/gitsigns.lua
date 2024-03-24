@@ -4,9 +4,7 @@ return {
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     event = 'BufEnter',
-    keys = {
-      { '<leader>gb', '<cmd>Gitsigns blame_line<CR>', desc = '[G]it [B]lame line' },
-    },
+    keys = {},
     opts = function()
       return {
         signs = {
