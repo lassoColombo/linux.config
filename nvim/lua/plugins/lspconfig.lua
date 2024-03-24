@@ -89,7 +89,7 @@ return {
       marksman = {},
       jsonls = {
         -- :NOTE: don't know why .lst file types are detected as .asm
-        filetypes = { "yaml", "yml", "lst", "asm" },
+        filetypes = { "json", "lst", "asm" },
         autostart = true,
         --
         -- lazy-load schemastore when needed
