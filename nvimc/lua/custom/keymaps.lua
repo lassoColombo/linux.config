@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>bw', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set('n', '<leader>ww', '<cmd>wa<CR>', { desc = '[W]orkspace [W]rite' })
 vim.keymap.set('n', '<leader>wc', '<cmd>qa<CR>', { desc = '[W]orkspace [C]lose' })
-vim.keymap.set('n', '<leader>wC', '<cmd>qa!<CR>', { desc = '[W]orkspace [C]lose' })
+vim.keymap.set('n', '<leader>wC', '<cmd>qa!<CR>', { desc = '[W]orkspace [C]lose force' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

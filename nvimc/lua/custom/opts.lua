@@ -83,5 +83,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- global and buffer disable_autoformat
+-- global disable_autoformat
 vim.g.autoformat_on_save = true
+
+-- global todo-comments
+vim.g.todo_comments = true

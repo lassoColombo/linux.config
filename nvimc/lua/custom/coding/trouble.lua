@@ -64,11 +64,11 @@ return {
     include_declaration = { 'lsp_references', 'lsp_implementations', 'lsp_definitions' }, -- for the given modes, include the declaration of the current symbol in the results
     signs = {
       -- icons / text used for a diagnostic
-      error = vim.g.diagnostics_error_symbol,
-      warning = vim.g.diagnostics_warning_symbol,
-      hint = vim.g.diagnostics_hint_symbol,
-      information = vim.g.diagnostics_info_symbol,
-      other = vim.g.diagnostics_other_symbol,
+      error = '❗',
+      warning = '❕',
+      hint = '🕯',
+      information = '🔎',
+      other = '🌈',
     },
     use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
   },

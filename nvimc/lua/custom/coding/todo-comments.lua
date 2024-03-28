@@ -2,21 +2,40 @@ return {
   'folke/todo-comments.nvim',
   event = 'VimEnter',
   dependencies = { 'nvim-lua/plenary.nvim' },
+  keys = {
+    { '<leader>st', '<cmd>TodoTelescope<cr>', desc = '[S]earch [T]odos' },
+    { '<leader>sT', '<cmd>TodoTelescope keywords=WARN,FIX<cr>', desc = '[S]earch [T]odos (errors|warnings)' },
+    {
+      '<leader>tt',
+      function()
+        local comments = require 'todo-comments'
+        local log_level = (vim.g.todo_comments and vim.log.levels.WARN or vim.log.levels.INFO)
+        if vim.g.todo_comments then
+          comments.disable()
+        else
+          comments.enable()
+        end
+        vim.g.todo_comments = not vim.g.todo_comments
+        vim.notify('set todo-comments to ' .. tostring(vim.g.todo_comments), log_level)
+      end,
+      desc = '[T]oggle [T]odo-comments',
+    },
+  },
   opts = {
     signs = false, -- show icons in the signs column
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
       FIX = {
-        icon = vim.g.diagnostics_error_symbol, -- icon used for the sign, and in search results
+        icon = '❗', -- icon used for the sign, and in search results
         color = 'error', -- can be a hex color, or a named color (see below)
         alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, -- a set of other keywords that all map to this FIX keywords
         -- signs = false, -- configure signs for some keywords individually
       },
 
-      TODO = { icon = vim.g.diagnostics_hint_symbol, color = 'info' },
+      TODO = { icon = '🕯', color = 'info' },
       HACK = { icon = '🔥', color = 'warning' },
-      WARN = { icon = vim.g.diagnostics_warning_symbol, color = 'warning', alt = { 'WARNING', 'XXX' } },
+      WARN = { icon = '❕', color = 'warning', alt = { 'WARNING', 'XXX' } },
       PERF = { icon = '📈', alt = { 'OPTIM', 'OPT', 'PERFORMANCE', 'OPTIMIZE' } },
       NOTE = { icon = '📑', color = 'hint', alt = { 'INFO' } },
       TEST = { icon = '🛠️', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
@@ -66,9 +85,5 @@ return {
       pattern = [[\b(KEYWORDS):]], -- ripgrep regex
       -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
     },
-  },
-  keys = {
-    { '<leader>st', '<cmd>TodoTelescope<cr>', desc = '[S]earch [T]odos' },
-    { '<leader>sT', '<cmd>TodoTelescope keywords=WARN,FIX<cr>', desc = '[S]earch [T]odos (errors|warnings)' },
   },
 }

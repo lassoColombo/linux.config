@@ -8,15 +8,12 @@ return {
 
     vim.keymap.set('n', '<leader>tc', function()
       local context = require 'treesitter-context'
-      local log_level = nil
       if context.enabled() then
         context.disable()
-        log_level = vim.log.levels.WARN
       else
         context.enable()
-        log_level = vim.log.levels.INFO
       end
-      vim.notify('set treesitter context to ' .. tostring(context.enabled()), log_level)
+      vim.notify('set treesitter context to ' .. tostring(context.enabled()), vim.log.levels.INFO)
     end, { desc = '[T]oggle treesitter [C]ontext' }),
   },
   opts = {
