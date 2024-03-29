@@ -1,7 +1,7 @@
-# /home/colombos/.config/tmuxinator/nvim.yml
+# /home/colombos/.config/tmuxinator/scad.yml
 
-name: 🤖nvim
-root: ~/.config/nvim/
+name: 💀scad
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
@@ -45,5 +45,4 @@ root: ~/.config/nvim/
 # attach: false
 
 windows:
-  - editor: nvim
-  - asd: echo asd | figlet | lolcat
+  - asd: echo scad | figlet | lolcat
