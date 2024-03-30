@@ -43,6 +43,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [N]eovim files' })
+    vim.keymap.set('n', '<leader>/', function()
+      builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy {
+        winblend = 10,
+        previewer = true,
+      })
+    end, { desc = '[/] Fuzzily search in current buffer' })
 
     -- examples
     --
@@ -55,11 +61,5 @@ return { -- Fuzzy Finder (files, lsp, etc)
     --   }
     -- end, { desc = '[S]earch [/] in Open Files' })
     --
-    -- vim.keymap.set('n', '<leader>/', function()
-    --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy {
-    --     winblend = 30,
-    --     previewer = true,
-    --   })
-    -- end, { desc = '[/] Fuzzily search in current buffer' })
   end,
 }

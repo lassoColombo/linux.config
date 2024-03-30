@@ -2,6 +2,7 @@ return {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
+
   keys = {
     {
       '<leader>cif',
@@ -15,18 +16,9 @@ return {
         require('conform').format { async = true, lsp_fallback = true }
       end,
       mode = 'n',
-      desc = '[B]uffer [F]ormat',
+      desc = '[C]ode [F]ormat',
     },
     {
-      '<leader>bf',
-      function()
-        require('conform').format { async = true, lsp_fallback = true }
-      end,
-      mode = 'n',
-      desc = '[B]uffer [F]ormat',
-    },
-    {
-      -- Customize or remove this keymap to your liking
       '<leader>tf',
       function()
         local log_level = (vim.g.autoformat_on_save and vim.log.levels.WARN or vim.log.levels.INFO)
@@ -37,6 +29,7 @@ return {
       desc = '[T]oggle auto[F]ormat',
     },
   },
+
   opts = function()
     local opts = {
       notify_on_error = true,
@@ -62,7 +55,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        python = { 'black' },
+        python = { 'isort', 'black' },
         sql = { 'sqlfmt' },
         -- Conform can also run multiple formatters sequentially
         -- go = { 'goimports', 'gofumpt' },

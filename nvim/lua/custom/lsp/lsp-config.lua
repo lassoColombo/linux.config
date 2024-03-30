@@ -26,12 +26,13 @@ return { -- LSP Configuration & Plugins
         map('<leader>cil', '<cmd>LspInfo<cr>', '[C]ode [I]nfo [L]sp')
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         -- telescope lsp mappings
         local telescope = require 'telescope.builtin'
         map('<leader>sr', telescope.lsp_references, '[S]earch [R]eferences')
         map('<leader>si', telescope.lsp_implementations, '[S]earch [I]mplementation')
-        map('<leader>ss', telescope.lsp_document_symbols, '[S]earc [S]ymbols document')
-        map('<leader>sS', telescope.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols workspace')
+        map('<leader>ss', telescope.lsp_document_symbols, '[S]earc [S]ymbols (document)')
+        map('<leader>sS', telescope.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols (workspace)')
         map('<leader>sd', telescope.diagnostics, '[S]earch [D]iagnostics')
         -- trouble lsp mappings
         -- stylua: ignore start
@@ -85,7 +86,9 @@ return { -- LSP Configuration & Plugins
       'stylua',
       -- python
       'pyright',
+      'pylint',
       'black',
+      'isort',
       -- yaml
       'yamlls',
       -- json

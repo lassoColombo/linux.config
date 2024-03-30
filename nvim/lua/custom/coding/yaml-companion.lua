@@ -12,7 +12,7 @@ return {
   end,
   opts = {},
   keys = {
-    { '<leader>cy', '<cmd>Telescope yaml_schema<cr>', desc = '[C]ode set [Y]aml schema' },
+    { '<leader>cy', '<cmd>Telescope yaml_schema<cr>', desc = '[C]ode set [Y]aml schema', ft = 'yaml' },
     -- {
     --   '<leader>cY',
     --   function()
