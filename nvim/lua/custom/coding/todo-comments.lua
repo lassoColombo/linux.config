@@ -4,9 +4,10 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   keys = {
     { '<leader>st', '<cmd>TodoTelescope<cr>', desc = '[S]earch [T]odos' },
+    { '<leader>sT', '<cmd>TodoTelescope keywords=WARN,WARNING,FIX,FIXME<cr>', desc = '[S]earch [T]odos' },
     -- :FIXME: fucking broken (sometimes?!)
     { '<leader>lt', '<cmd>Trouble todo<cr>', desc = '[L]ist [T]odos' },
-    { '<leader>lT', '<cmd>TodoTelescope keywords=WARN,WARNING,FIX,FIXME<cr>', desc = '[L]ist [T]odos (errors|warnings)' },
+    { '<leader>lT', '<cmd>TodoTrouble keywords=WARN,WARNING,FIX,FIXME<cr>', desc = '[L]ist [T]odos (errors|warnings)' },
     {
       '<leader>tt',
       function()

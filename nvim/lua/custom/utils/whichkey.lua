@@ -8,6 +8,9 @@ return { -- Useful plugin to show you pending keybinds.
     require('which-key').register {
       ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
       ['<leader>ci'] = { name = '[C]ode [I]nfo', _ = 'which_key_ignore' },
+      -- :TODO: trigger the following only when attaching to yaml buffer
+      ['<leader>cy'] = { name = '[C]ode [y]aml', _ = 'which_key_ignore' },
+      ['<leader>ct'] = { name = '[C]ode [T]reesitter', _ = 'which_key_ignore' },
       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
       ['<leader>l'] = { name = '[L]ist', _ = 'which_key_ignore' },
       ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },

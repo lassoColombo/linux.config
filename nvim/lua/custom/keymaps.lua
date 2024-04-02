@@ -6,9 +6,15 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', "<cmd>execute 'nohlsearch | NoiceDismiss'<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = '[C]ode (line) [D]iagnostics' })
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.goto_prev { float = { source = true } }
+end, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.goto_next { float = { source = true } }
+end, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>cd', function()
+  vim.diagnostic.open_float { source = true }
+end, { desc = '[C]ode (line) [D]iagnostics' })
 
 -- Buffer keymaps
 vim.keymap.set('n', '<leader>bw', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })

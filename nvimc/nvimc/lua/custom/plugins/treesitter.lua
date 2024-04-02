@@ -1,45 +1,18 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    'nvim-treesitter/nvim-treesitter-context',
-  },
-  event = { 'BufReadPre', 'BufNewFile' },
   build = ':TSUpdate',
   config = function()
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
-      ensure_installed = {
-        'bash',
-        'lua',
-        'markdown',
-        'vim',
-        'vimdoc',
-        'ninja',
-        'python',
-        'toml',
-        'json',
-        'json5',
-        'jsonc',
-        'yaml',
-        'dockerfile',
-      },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<leader>cv', -- set to `false` to disable one of the mappings
-          node_incremental = 'gn',
-          scope_incremental = 'gs',
-          node_decremental = 'gN',
-        },
-      },
     }
+
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --

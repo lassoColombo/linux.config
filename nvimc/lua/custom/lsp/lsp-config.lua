@@ -22,15 +22,16 @@ return { -- LSP Configuration & Plugins
 
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
         map('<leader>bs', require('telescope.builtin').lsp_document_symbols, '[B]uffer [S]ymbols')
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
         map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
         map('<leader>cil', '<cmd>LspInfo<cr>', '[C]ode [I]nfo [L]sp')
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
+
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+        map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
         -- The following two autocommands are used to highlight references of the
         -- word under cursor when your cursor rests there for a little while.

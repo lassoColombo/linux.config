@@ -25,6 +25,7 @@ return { -- LSP Configuration & Plugins
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
         map('<leader>cil', '<cmd>LspInfo<cr>', '[C]ode [I]nfo [L]sp')
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
+
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         -- telescope lsp mappings
@@ -33,7 +34,10 @@ return { -- LSP Configuration & Plugins
         map('<leader>si', telescope.lsp_implementations, '[S]earch [I]mplementation')
         map('<leader>ss', telescope.lsp_document_symbols, '[S]earc [S]ymbols (document)')
         map('<leader>sS', telescope.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols (workspace)')
-        map('<leader>sd', telescope.diagnostics, '[S]earch [D]iagnostics')
+        map('<leader>sD', telescope.diagnostics, '[S]earch [D]iagnostics (workspace)')
+        map('<leader>sd', function()
+          telescope.diagnostics { bufnr = 0 }
+        end, '[S]earch [D]iagnostics (buffer)')
         -- trouble lsp mappings
         -- stylua: ignore start
         local trouble = require 'trouble'
@@ -98,11 +102,17 @@ return { -- LSP Configuration & Plugins
       -- sql
       'sqls',
       'sqlfmt',
+      'sqlfmt',
       -- docker
       'dockerls',
       'docker_compose_language_service',
       -- bash
       'bashls',
+      -- toml
+      'taplo',
+      -- ansible
+      'ansiblels',
+      'ansible-lint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

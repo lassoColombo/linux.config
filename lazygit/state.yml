@@ -1,14 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/colombos/.config
+- /home/colombos/projects/work/traho/trahoproject
+- /home/colombos/projects/work/traho/ansible
+- /home/colombos/projects/work/clopin/clopin
 - /home/colombos/projects/work/dmilog-ansible
 - /home/colombos/projects/work/securityproject
 - /home/colombos/projects/work/libsecurity
-- /home/colombos/projects/work/clopin/clopin
-- /home/colombos/projects/work/traho/trahoproject
 - /home/colombos/projects/work/docs/static-lists-customer
 - /home/colombos/projects/work/llama/llama_project
-- /home/colombos/projects/work/traho/traho-ansibles
 - /home/colombos/projects/work/docs/files-2-db
 startuppopupversion: 5
 customcommandshistory: []
