@@ -78,6 +78,7 @@ return { -- LSP Configuration & Plugins
       pyright = require 'custom.lsp.configs.pyright',
       yamlls = require 'custom.lsp.configs.yamlls',
       jsonls = require 'custom.lsp.configs.jsonls',
+      sqls = require 'custom.lsp.configs.sqls',
     }
 
     require('mason').setup()
@@ -101,7 +102,6 @@ return { -- LSP Configuration & Plugins
       'bashls',
       -- sql
       'sqls',
-      'sqlfmt',
       'sqlfmt',
       -- docker
       'dockerls',
