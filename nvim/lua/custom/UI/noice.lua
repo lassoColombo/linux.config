@@ -11,6 +11,19 @@ return {
   },
   keys = {},
   opts = function()
+    vim.keymap.set('n', '<leader>tn', function()
+      local loglevel = nil
+      if vim.g.noice then
+        require('noice').disable()
+        loglevel = vim.log.levels.WARN
+      else
+        require('noice').enable()
+        loglevel = vim.log.levels.info
+      end
+      vim.g.noice = not vim.g.noice
+
+      vim.notify('set noice to ' .. tostring(vim.g.noice), loglevel)
+    end, { desc = '[B]uffer [W]rite' })
     return {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
