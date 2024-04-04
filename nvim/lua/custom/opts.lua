@@ -88,3 +88,6 @@ vim.g.autoformat_on_save = true
 
 -- global todo-comments
 vim.g.todo_comments = true
+
+-- global noice
+vim.g.noice = true
