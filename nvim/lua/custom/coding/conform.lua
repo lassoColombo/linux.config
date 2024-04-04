@@ -15,7 +15,7 @@ return {
       function()
         require('conform').format { async = true, lsp_fallback = true }
       end,
-      mode = 'n',
+      mode = { 'n', 'v' },
       desc = '[C]ode [F]ormat',
     },
     {
@@ -23,7 +23,7 @@ return {
       function()
         local log_level = (vim.g.autoformat_on_save and vim.log.levels.WARN or vim.log.levels.INFO)
         vim.g.autoformat_on_save = not vim.g.autoformat_on_save
-        vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), log_level)
+        vim.notify('set autoformat on save to ' .. tostring(vim.g.autoformat_on_save), log_level)
       end,
       mode = 'n',
       desc = '[T]oggle auto[F]ormat',
@@ -57,6 +57,7 @@ return {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         sql = { 'sqlfmt' },
+        yaml = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- go = { 'goimports', 'gofumpt' },
         -- You can use a sub-list to tell conform to run *until* a formatter
