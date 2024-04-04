@@ -27,19 +27,44 @@ local function format_to_f_string(node)
     end
   end
 
-  local function extract_arguments(str)
+  local function extractArguments(input)
     local args = {}
-    -- Match everything inside parentheses and iterate through the matches
-    for arg in str:gmatch '%((.-)%)' do
-      -- Split the matched string by comma and add each argument to the table
-      for match in arg:gmatch '[^,%s]+' do
-        table.insert(args, match)
+    local depth = 0
+    local currentArgument = ''
+
+    for i = 1, #input do
+      local char = input:sub(i, i)
+
+      if char == '(' then
+        if depth > 0 then
+          currentArgument = currentArgument .. char
+        end
+        depth = depth + 1
+      elseif char == ')' then
+        depth = depth - 1
+        if depth == 0 then
+          local arg = currentArgument:gsub('%s+', '')
+          table.insert(args, arg)
+          currentArgument = ''
+        else
+          currentArgument = currentArgument .. char
+        end
+      elseif char == ',' then
+        if depth == 1 then
+          table.insert(args, currentArgument)
+          currentArgument = ''
+        else
+          currentArgument = currentArgument .. char
+        end
+      else
+        currentArgument = currentArgument .. char
       end
     end
-    return args -- Return the table of extracted arguments
+
+    return args
   end
 
-  arguments = extract_arguments(helpers.node_text(arguments))
+  arguments = extractArguments(helpers.node_text(arguments))
 
   local i = 1
   local result = template_text:gsub('{}', function()
