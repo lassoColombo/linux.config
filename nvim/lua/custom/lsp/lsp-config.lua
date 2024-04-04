@@ -25,21 +25,19 @@ return { -- LSP Configuration & Plugins
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
         map('<leader>cil', '<cmd>LspInfo<cr>', '[C]ode [I]nfo [L]sp')
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
-
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         -- telescope lsp mappings
+        -- stylua: ignore start
         local telescope = require 'telescope.builtin'
+        map('gr', telescope.lsp_references, '[G]oto [R]eferences')
+        map('gd', telescope.lsp_definitions, '[G]oto [D]efinitions')
+        map('gD', telescope.lsp_type_definitions, '[G]oto type [D]efinitions')
         map('<leader>sr', telescope.lsp_references, '[S]earch [R]eferences')
         map('<leader>si', telescope.lsp_implementations, '[S]earch [I]mplementation')
         map('<leader>ss', telescope.lsp_document_symbols, '[S]earc [S]ymbols (document)')
         map('<leader>sS', telescope.lsp_dynamic_workspace_symbols, '[S]earch [S]ymbols (workspace)')
         map('<leader>sD', telescope.diagnostics, '[S]earch [D]iagnostics (workspace)')
-        map('<leader>sd', function()
-          telescope.diagnostics { bufnr = 0 }
-        end, '[S]earch [D]iagnostics (buffer)')
+        map('<leader>sd', function() telescope.diagnostics { bufnr = 0 } end, '[S]earch [D]iagnostics (buffer)')
         -- trouble lsp mappings
-        -- stylua: ignore start
         local trouble = require 'trouble'
         map('<leader>ld', function () trouble.toggle 'document_diagnostics' end, '[L]ist [D]iagnostics (document)')
         map('<leader>lD', function () trouble.toggle 'workspace_diagnostics' end, '[L]ist [D]iagnostics (workspace)')
@@ -49,7 +47,7 @@ return { -- LSP Configuration & Plugins
         -- :TODO: drop builtins in favour of the following (not working!!)
         -- map(']d', function () require("trouble").next({skip_groups = true, jump = true}) end, '[next [D]iagnostic')
         -- map('[d', function () require("trouble").previous({skip_groups = true, jump = true}) end, '[previous [D]iagnostic')
-
+        --
         -- stylua: ignore end
 
         -- The following two autocommands are used to highlight references of the
@@ -96,6 +94,7 @@ return { -- LSP Configuration & Plugins
       'isort',
       -- yaml
       'yamlls',
+      'prettier',
       -- json
       'jsonls',
       -- bash
