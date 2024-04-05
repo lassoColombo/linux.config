@@ -108,7 +108,13 @@ return {
       -- A list of functions, each representing a global custom command
       -- that will be available in all sources (if not overridden in `opts[source_name].commands`)
       -- see `:h neo-tree-custom-commands-global`
-      commands = {},
+      commands = {
+        copy_paths = require('custom.UI.neo-tree-commands.neo-tree-copypath').copy_paths,
+        copy_relative_path = require('custom.UI.neo-tree-commands.neo-tree-copypath').copy_relative_path,
+        copy_absolute_path = require('custom.UI.neo-tree-commands.neo-tree-copypath').copy_absolute_path,
+        copy_filename = require('custom.UI.neo-tree-commands.neo-tree-copypath').copy_filename,
+      },
+
       window = {
         position = 'left',
         width = 40,
@@ -117,6 +123,10 @@ return {
           nowait = true,
         },
         mappings = {
+          ['yy'] = 'copy_paths',
+          ['ya'] = 'copy_absolute_path',
+          ['yr'] = 'copy_relative_path',
+          ['yn'] = 'copy_filename',
           ['<space>'] = {
             'toggle_node',
             nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
@@ -137,7 +147,7 @@ return {
           -- ["t"] = "open_tab_drop",
           ['w'] = 'open_with_window_picker',
           --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
-          ['C'] = 'close_node',
+          -- ['C'] = 'close_node',
           -- ['C'] = 'close_all_subnodes',
           ['z'] = 'close_all_nodes',
           ['Z'] = 'expand_all_nodes',
@@ -152,10 +162,11 @@ return {
           ['A'] = 'add_directory', -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
           ['d'] = 'delete',
           ['r'] = 'rename',
-          ['y'] = 'copy_to_clipboard',
+          -- ['y'] = 'copy_to_clipboard',
           ['x'] = 'cut_to_clipboard',
           ['p'] = 'paste_from_clipboard',
           ['c'] = 'copy', -- takes text input for destination, also accepts the optional config.show_path option like "add":
+
           -- ["c"] = {
           --  "copy",
           --  config = {
