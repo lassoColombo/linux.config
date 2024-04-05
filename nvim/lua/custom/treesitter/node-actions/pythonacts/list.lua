@@ -9,6 +9,7 @@ local function expand(node)
   local opening_bracket = helpers.node_text(node:child(0))
   local res = { opening_bracket }
   local children_count = node:child_count()
+  local tt = {}
   for i = 1, children_count - 3, 2 do
     local j = i + 1
     local element = node:child(i)
@@ -21,6 +22,7 @@ local function expand(node)
   end
 
   table.insert(res, helpers.node_text(node:child(children_count - 1)))
+
   return res
 end
 

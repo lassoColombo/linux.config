@@ -1,5 +1,43 @@
 local helpers = require 'ts-node-action.helpers'
 
+-- extracts the arguments of the "".format(*args) function call into a list
+local function extractArguments(input)
+  local args = {}
+  local depth = 0
+  local currentArgument = ''
+
+  for i = 1, #input do
+    local char = input:sub(i, i)
+
+    if char == '(' then
+      if depth > 0 then
+        currentArgument = currentArgument .. char
+      end
+      depth = depth + 1
+    elseif char == ')' then
+      depth = depth - 1
+      if depth == 0 then
+        local arg = currentArgument:gsub('%s+', '')
+        table.insert(args, arg)
+        currentArgument = ''
+      else
+        currentArgument = currentArgument .. char
+      end
+    elseif char == ',' then
+      if depth == 1 then
+        table.insert(args, currentArgument)
+        currentArgument = ''
+      else
+        currentArgument = currentArgument .. char
+      end
+    else
+      currentArgument = currentArgument .. char
+    end
+  end
+
+  return args
+end
+
 local function format_to_f_string(node)
   local template_text = helpers.node_text(node)
 
@@ -25,43 +63,6 @@ local function format_to_f_string(node)
       arguments = children
       break
     end
-  end
-
-  local function extractArguments(input)
-    local args = {}
-    local depth = 0
-    local currentArgument = ''
-
-    for i = 1, #input do
-      local char = input:sub(i, i)
-
-      if char == '(' then
-        if depth > 0 then
-          currentArgument = currentArgument .. char
-        end
-        depth = depth + 1
-      elseif char == ')' then
-        depth = depth - 1
-        if depth == 0 then
-          local arg = currentArgument:gsub('%s+', '')
-          table.insert(args, arg)
-          currentArgument = ''
-        else
-          currentArgument = currentArgument .. char
-        end
-      elseif char == ',' then
-        if depth == 1 then
-          table.insert(args, currentArgument)
-          currentArgument = ''
-        else
-          currentArgument = currentArgument .. char
-        end
-      else
-        currentArgument = currentArgument .. char
-      end
-    end
-
-    return args
   end
 
   arguments = extractArguments(helpers.node_text(arguments))
