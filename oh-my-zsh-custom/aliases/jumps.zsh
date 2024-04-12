@@ -1,5 +1,0 @@
-alias zw='z projects work'
-alias zu='z projects uni'
-alias zc='z .config'
-alias zz='z .config zsh'
-alias zo='z .config oh-my-zsh custom'

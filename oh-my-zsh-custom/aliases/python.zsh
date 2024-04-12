@@ -1,6 +1,0 @@
-alias p='python'
-alias py='python'
-alias pm='python -m'
-alias pym='python -m'
-alias pp='python -m pip'
-alias pt='pytest'

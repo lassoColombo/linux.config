@@ -1,9 +1,0 @@
-source $HOME/.config/oh-my-zsh/custom/aliases/kube.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/misc.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/python.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/nvim.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/jumps.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/docker.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/fzf.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/git.zsh
-source $HOME/.config/oh-my-zsh/custom/aliases/system.zsh

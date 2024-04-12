@@ -1,5 +1,0 @@
-alias kb='kubectl'
-alias kbll='kubectl -n sec-llama-productio'
-alias kbse='kubectl -n sec-securityproject-production'
-alias kbcl='kubectl -n sec-clopin-production'
-alias kbx='kubectx'
