@@ -12,7 +12,7 @@ root: ~/projects/work/clopin/clopin/
 # Project hooks
 
 # Runs on project start, always
-on_project_first_start: docker-compose -f devutils/docker-compose.yaml up -d
+# on_project_first_start: docker-compose -f devutils/docker-compose.yaml up -d
 
 # Run on project start, the first time
 # on_project_first_start: command
@@ -24,7 +24,7 @@ on_project_first_start: docker-compose -f devutils/docker-compose.yaml up -d
 # on_project_exit: command
 
 # Run on project stop
-on_project_exit: docker-compose -f devutils/docker-compose.yaml down
+# on_project_exit: docker-compose -f devutils/docker-compose.yaml down
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
