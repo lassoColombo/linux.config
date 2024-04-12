@@ -1,0 +1,30 @@
+layout name="secproj" {
+    tab name="nvim" {
+        pane {
+            name "nvim"
+            cwd "~/projects/work/secproj/"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="server" {
+        pane {
+            name "server"
+            cwd "~/projects/work/secproj/"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="shell"  {
+        pane {
+            name "shell"
+            cwd "~/projects/work/secproj/"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+}

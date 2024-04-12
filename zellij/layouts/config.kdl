@@ -1,0 +1,62 @@
+layout name="config" {
+    tab name="nvim" {
+        pane {
+            name "nvim"
+            cwd "~/.config/nvim"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="zellij" {
+        pane {
+            name "zellij"
+            cwd "~/.config/zellij"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="i3" {
+        pane {
+            name "i3"
+            cwd "~/.config/i3"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="oh-my" {
+        pane {
+            name "oh-my"
+            cwd "~/.config/oh-my-zsh/"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="zsh" {
+        pane {
+            name "zsh"
+            cwd "~/.config/zsh/"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="terminator" {
+        pane {
+            name "terminator"
+            cwd "~/.config/terminator/"
+            command "nvim"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+}
