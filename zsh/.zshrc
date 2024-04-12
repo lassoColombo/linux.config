@@ -115,6 +115,13 @@ else
   export EDITOR='nvim'
 fi
 
+if [[ -z "$ZELLIJ" ]]; then
+    zellij attach -c home
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
