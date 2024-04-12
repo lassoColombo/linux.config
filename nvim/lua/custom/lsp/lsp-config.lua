@@ -112,6 +112,8 @@ return { -- LSP Configuration & Plugins
       -- ansible
       'ansiblels',
       'ansible-lint',
+      -- markdown
+      'marksman',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -15,6 +15,7 @@ return { -- Useful plugin to show you pending keybinds.
       ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
       ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
       ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+      ['<leader>S'] = { name = '[S]ource', _ = 'which_key_ignore' },
     }
   end,
 }

@@ -65,7 +65,13 @@ return {
       }),
     })
 
-    require 'custom.cmp.snippets.luasnips'
-    require 'custom.cmp.snippets.pythonsnips'
+    -- :TODO:
+    -- require('which-key').register {
+    --   ['<leader>Ss'] = { name = '[S]ource [S]nippets', _ = 'which_key_ignore' },
+    -- }
+
+    require 'custom.cmp.snippets.luasnips.luasnips'
+
+    require 'custom.cmp.snippets.pyhonsnips.pythonsnips'
   end,
 }

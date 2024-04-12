@@ -38,6 +38,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       builtin.find_files { hidden = true, no_ignore = true }
     end, { desc = '[S]earch [F]iles (hidden)' })
     vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers ' })
+    vim.keymap.set('n', '<leader><leader>s', builtin.buffers, { desc = '[S]earch [B]uffers ' })
     -- other searches
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>sn', function()

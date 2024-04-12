@@ -7,12 +7,12 @@ vim.g.maplocalleader = ' '
 vim.diagnostic.config {
   virtual_text = false,
   signs = true,
-  underline = false,
+  underline = true,
   update_in_insert = false,
   severity_sort = false,
 }
 
-local signs = { Error = '❗', Warn = '❕', Hint = '🕯', Info = '🔎' }
+local signs = { Error = 'E', Warn = 'W', Hint = 'H', Info = 'I' }
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

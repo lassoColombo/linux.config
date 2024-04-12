@@ -23,7 +23,7 @@ return {
       vim.g.noice = not vim.g.noice
 
       vim.notify('set noice to ' .. tostring(vim.g.noice), loglevel)
-    end, { desc = '[B]uffer [W]rite' })
+    end, { desc = '[T]oggle [N]oice' })
     return {
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**

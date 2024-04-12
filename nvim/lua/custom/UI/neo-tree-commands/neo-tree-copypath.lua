@@ -49,7 +49,7 @@ return {
       '4. Filename: ' .. results[4],
       '5. Filename without extension: ' .. results[5],
       '6. Extension of the filename: ' .. results[6],
-    }, { prompt = 'copy to clipboard:' }, function(choice)
+    }, { prompt = 'copy path to clipboard:' }, function(choice)
       if choice then
         local i = tonumber(choice:sub(1, 1))
         if i then

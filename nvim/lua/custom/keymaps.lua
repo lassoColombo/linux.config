@@ -18,7 +18,7 @@ end, { desc = '[C]ode (line) [D]iagnostics' })
 
 -- Buffer keymaps
 vim.keymap.set('n', '<leader>bw', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
+vim.keymap.set({ 'n', 'i' }, '<C-s>', '<cmd>w<cr><esc>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set('n', '<leader>ww', '<cmd>wa<CR>', { desc = '[W]orkspace [W]rite' })
 vim.keymap.set('n', '<leader>wq', '<cmd>qa<CR>', { desc = '[W]orkspace [Q]quit' })
 vim.keymap.set('n', '<leader>wQ', '<cmd>qa!<CR>', { desc = '[W]orkspace [Q]uit force' })
