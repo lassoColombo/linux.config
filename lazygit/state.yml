@@ -1,9 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/colombos/.config
+- /home/colombos/projects/work/docs/static-lists-customer
+- /home/colombos/projects/work/secproj/SECARC-290-better-report
 - /home/colombos/projects/work/traho/trahoproject
 - /home/colombos/projects/work/securityproject
-- /home/colombos/projects/work/docs/static-lists-customer
+- /home/colombos/projects/work/docs/security-architect-procedures
 - /home/colombos/projects/work/traho/ansible
 - /home/colombos/projects/work/clopin/clopin
 - /home/colombos/projects/work/dmilog-ansible
