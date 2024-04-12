@@ -59,40 +59,35 @@ bindsym Mod1+Return exec terminator
 bindsym Mod1+Shift+q kill
 
 # start rofi as program launcher
-bindsym Mod1+d exec --no-startup-id rofi -no-lazy-grab -theme /home/colombos/.config/rofi/launchers/drun/style.rasi -show drun  -p "( ͡° ͜ʖ ͡°)"
+bindsym Mod1+Shift+d exec --no-startup-id rofi -no-lazy-grab -theme /home/colombos/.config/rofi/launchers/drun/style.rasi -show drun  -p "( ͡° ͜ʖ ͡°)"
 # start rofi as script launcher
-bindsym Mod1+c exec --no-startup-id $HOME/.config/scripts/wrappers/src/rofi_run
-# start rofi as ssh manager
-bindsym Mod1+Shift+s exec --no-startup-id rofi -theme /home/colombos/.config/rofi/launchers/ssh/style.rasi -show ssh -matching fuzzy  -p "( ͡° ͜ʖ ͡°)"
+bindsym Mod1+Shift+x exec --no-startup-id $HOME/.config/scripts/wrappers/src/rofi_run
 # start rofi as window switcher
-bindsym Mod1+w exec --no-startup-id rofi -theme /home/colombos/.config/rofi/launchers/window/style.rasi -show window -matching fuzzy  -p "( ͡° ͜ʖ ͡°)"
+bindsym Mod1+Shift+w exec --no-startup-id rofi -theme /home/colombos/.config/rofi/launchers/window/style.rasi -show window -matching fuzzy  -p "( ͡° ͜ʖ ͡°)"
 # proxmox
-bindsym Mod1+Shift+p exec --no-startup-id $HOME/.config/scripts/work/src/drift --proxmox
-# ilo
-bindsym Mod1+Shift+i exec --no-startup-id $HOME/.config/scripts/work/src/drift --ilo
 
 # change focus
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
-bindsym Mod1+$up focus up
-bindsym Mod1+$right focus right
+bindsym Mod1+Shift+$left focus left
+bindsym Mod1+Shift+$down focus down
+bindsym Mod1+Shift+$up focus up
+bindsym Mod1+Shift+$right focus right
 
 # enter fullscreen mode for the focused container
-bindsym Mod1+f fullscreen toggle
+bindsym Mod1+Shift+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 
 # toggle tiling / floating
-bindsym Mod1+Shift+space floating toggle
+# bindsym Mod1+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
+# bindsym Mod1+space focus mode_toggle
 
 # move the currently focused window to the scratchpad
-bindsym Mod1+Shift+minus move scratchpad
+# bindsym Mod1+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod1+minus scratchpad show
+# bindsym Mod1+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -120,10 +115,10 @@ bindsym Mod1+9 workspace number $ws9
 bindsym Mod1+0 workspace number $ws10
 
 # move focused window
-bindsym Mod1+Shift+$left move left
-bindsym Mod1+Shift+$down move down
-bindsym Mod1+Shift+$up move up
-bindsym Mod1+Shift+$right move right
+bindsym Mod1+Shift+u move left
+bindsym Mod1+Shift+i move down
+bindsym Mod1+Shift+o up move up
+bindsym Mod1+Shift+p move right
 
 # move focused container to workspace
 bindsym Mod1+Shift+1 move container to workspace number $ws1
@@ -140,7 +135,7 @@ bindsym Mod1+Shift+0 move container to workspace number $ws10
 # reload the configuration file
 bindsym Mod1+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod1+Shift+r restart
+# bindsym Mod1+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -169,17 +164,17 @@ mode "resize" {
         bindsym Mod1+r mode "default"
 }
 
-bindsym Mod1+r mode "resize"
+bindsym Mod1+Shift+r mode "resize"
 #### google chrome
-bindsym Mod1+b exec google-chrome-stable
+bindsym Mod1+Shift+b exec google-chrome-stable
 #### bluethooth manager
-bindsym Mod1+Control+b exec --no-startup-id "blueman-manager"
+# bindsym Mod1+Control+b exec --no-startup-id "blueman-manager"
 ### audio controls
-bindsym Mod1+Control+a exec --no-startup-id "pavucontrol"
+# bindsym Mod1+Control+a exec --no-startup-id "pavucontrol"
 #### moji selector
 bindsym Mod1+Shift+m exec --no-startup-id "~/.config/scripts/rofi/src/mojis"
 #### screenshots
-bindsym Mod1+p exec --no-startup-id "~/.config/scripts/rofi/src/rofi-screenshot"
+bindsym Mod1+Shift+s exec --no-startup-id "~/.config/scripts/rofi/src/rofi-screenshot"
 
 #### brightness controls
 bindsym Mod1+Control+Left exec --no-startup-id "brightnessctl set 10%-"
@@ -191,8 +186,8 @@ bindsym Mod1+Control+m exec --no-startup-id "pamixer --toggle-mute"
 #### lock screen
 bindsym mod1+Control+l exec "i3lock -c 1f2335 -i $HOME/Pictures/wallpapers/starry_night_dimmed.png"
 
-bindsym mod1+Control+v  exec "i3l vstack 0.65 right"
-bindsym mod1+Control+h  exec "i3l hstack 0.8 down"
+# bindsym mod1+Control+v  exec "i3l vstack 0.65 right"
+# bindsym mod1+Control+h  exec "i3l hstack 0.8 down"
 
 # launch notification manager
 exec --no-startup-id dunst
