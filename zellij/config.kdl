@@ -6,7 +6,7 @@ keybinds {
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
         bind "Alt k" "Alt Up" { MoveFocus "Up"; }
         bind "Alt q" { Quit; }
-        // comment this and adjust key if not using copy_on_select=false
+        // comment the following line and adjust key if not using copy_on_select=false
         bind "Alt c" { Copy; }
         bind "Alt n" { NewPane "down"; }
         bind "Alt N" { NewPane "right"; }
@@ -18,6 +18,8 @@ keybinds {
         bind "Alt f" { SwitchToMode "search"; }
         bind "Alt s" { SwitchToMode "scroll"; }
         bind "Alt t" { SwitchToMode "tmux"; }
+        bind "Alt [" { PreviousSwapLayout; }
+        bind "Alt ]" { NextSwapLayout; }
         bind "Alt v" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-workspace.wasm" {
                 floating true
@@ -108,7 +110,7 @@ keybinds {
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         // uncomment this and adjust key if using copy_on_select=false
-        // bind "Alt c" { Copy; }
+        bind "Alt c" { Copy; }
     }
     search {
         bind "Alt s" { SwitchToMode "Normal"; }
