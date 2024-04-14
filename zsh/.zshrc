@@ -109,18 +109,20 @@ setxkbmap -option "caps:swapescape"
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+export EDITOR='nvim'
 
 if [[ -z "$ZELLIJ" ]]; then
-    zellij attach -c home
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+        zellij attach -c
+    else
+        zellij
+    fi
+
     if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
         exit
     fi
 fi
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
