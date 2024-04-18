@@ -1,3 +1,4 @@
+-- :FIXME: i'm yanking into register a just because the unnamedplus seems not to be working
 return {
   copy_relative_path = function(state)
     local node = state.tree:get_node()
@@ -6,7 +7,7 @@ return {
     filepath = modify(filepath, ':.')
 
     if filepath then
-      vim.fn.setreg('"', filepath)
+      vim.fn.setreg('a', filepath)
       vim.notify('Copied: ' .. filepath)
     end
   end,
@@ -15,7 +16,7 @@ return {
     local filepath = node:get_id()
     if filepath then
       vim.notify('Copied: ' .. filepath)
-      vim.fn.setreg('"', filepath)
+      vim.fn.setreg('a', filepath)
     end
   end,
   copy_filename = function(state)
@@ -23,7 +24,7 @@ return {
     local filename = node.name
 
     if filename then
-      vim.fn.setreg('"', filename)
+      vim.fn.setreg('a', filename)
       vim.notify('Copied: ' .. filename)
     end
   end,
@@ -54,7 +55,8 @@ return {
         local i = tonumber(choice:sub(1, 1))
         if i then
           local result = results[i]
-          vim.fn.setreg('"', result)
+          vim.fn.setreg('a', result)
+
           vim.notify('Copied: ' .. result)
         else
           vim.notify 'Invalid selection'

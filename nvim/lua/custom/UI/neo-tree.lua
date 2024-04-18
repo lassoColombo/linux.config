@@ -123,6 +123,7 @@ return {
           nowait = true,
         },
         mappings = {
+
           ['yy'] = 'copy_paths',
           ['ya'] = 'copy_absolute_path',
           ['yr'] = 'copy_relative_path',
