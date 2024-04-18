@@ -112,12 +112,7 @@ setxkbmap -option "caps:swapescape"
 export EDITOR='nvim'
 
 if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-        zellij attach -c
-    else
-        zellij
-    fi
-
+    zellij list-sessions | grep -q home && zellij attach home  || zellij --layout ~/.config/zellij/layouts/home.kdl  attach --create home 
     if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
         exit
     fi
