@@ -1,9 +1,11 @@
--- [[ Basic Keymaps ]]
+-- [[ Basic Keymaps ]]keymaps
 --  See `:help vim.keymap.set()`
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', "<cmd>execute 'nohlsearch | NoiceDismiss'<CR>")
+vim.keymap.set('n', '<leader>p', '"*p', {desc='[P]aste from system clipboard'})
+vim.keymap.set('n', '<leader>y', '"*y',{desc='[Y]ank to system clipboard'})
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', function()
@@ -16,6 +18,8 @@ vim.keymap.set('n', '<leader>cd', function()
   vim.diagnostic.open_float { source = true }
 end, { desc = '[C]ode (line) [D]iagnostics' })
 
+-- :FIXME: not working
+-- vim.keymap.set('n', '<leader>r', ';.', { desc = '[R]epeat motion and action' })
 -- Buffer keymaps
 vim.keymap.set('n', '<leader>bw', '<cmd>w<CR>', { desc = '[B]uffer [W]rite' })
 vim.keymap.set({ 'n', 'i' }, '<C-s>', '<cmd>w<cr><esc>', { desc = '[B]uffer [W]rite' })
