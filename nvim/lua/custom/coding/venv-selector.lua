@@ -14,7 +14,6 @@ return {
     return vim.tbl_deep_extend('force', opts, custom_opts)
   end,
   keys = {
-    -- Keymap to open VenvSelector to pick a venv.
-    { '<leader>cV', '<cmd>VenvSelect<cr>', desc = '[C]ode [V]env', ft = 'python' },
+    { '<leader>clv', '<cmd>VenvSelect<cr>', desc = '[C]ode [L]SP select [V]env', ft = 'python' },
   },
 }

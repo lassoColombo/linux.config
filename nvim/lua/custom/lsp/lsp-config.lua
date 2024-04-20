@@ -21,6 +21,10 @@ return { -- LSP Configuration & Plugins
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
         end
 
+        require('which-key').register {
+          ['<leader>l'] = { mode = { 'v', 'n' }, name = '[L]SP', _ = 'which_key_ignore' },
+        }
+
         map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
         map('<leader>cil', '<cmd>LspInfo<cr>', '[C]ode [I]nfo [L]sp')

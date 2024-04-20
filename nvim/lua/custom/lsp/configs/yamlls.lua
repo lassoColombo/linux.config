@@ -4,6 +4,7 @@ return {
   event = 'BufEnter',
 
   on_attach = function(client, bufnr)
+    -- :NOTE: the following is here to group all plugins referring to yaml files
     require('which-key').register {
       ['<leader>cy'] = { name = '[C]ode [Y]aml', _ = 'which_key_ignore' },
     }
