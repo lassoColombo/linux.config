@@ -5,6 +5,9 @@ layout name="config" {
     tab name="zsh" cwd="~/.config/zsh/" {
         pane name="zsh" command="nvim"
     }
+    tab name="nvim" cwd="~/.config/nvim/" {
+        pane name="nvim" command="nvim"
+    }
     tab name="zellij" cwd="~/.config/zellij/" {
         pane name="zellij" command="nvim"
     }
