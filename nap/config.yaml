@@ -4,14 +4,14 @@ default_language: bash
 theme: nord
 
 # Colors
-background: "#c0caf5"
-foreground: "#394b70"
-primary_color: "#394b70"
-primary_color_subdued: "#1d202f"
+background: "0"
+foreground: "7"
+primary_color: "#e0af68"
+primary_color_subdued: "#4364AA"
 green: "#9ece6a"
-bright_green: "#96E245"
+bright_green: "#87CC3D"
 bright_red: "#ff007c"
 red: "#f7768e"
 black: "#1d202f"
-gray: "#c0caf5"
-white: "#DADFF7"
+gray: "#394b70"
+white: "#FFFFFF"
