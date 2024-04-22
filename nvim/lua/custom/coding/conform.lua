@@ -58,6 +58,7 @@ return {
         python = { 'isort', 'black' },
         sql = { 'sqlfmt' },
         yaml = { 'prettier' },
+        json = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- go = { 'goimports', 'gofumpt' },
         -- You can use a sub-list to tell conform to run *until* a formatter
@@ -65,29 +66,35 @@ return {
         -- javascript = { { "prettierd", "prettier" } },
       },
     }
-    -- user commands to toggle autoformat
+    -- :NOTE: old user commands to toggle autoformat
+    --
     -- disable
-    vim.api.nvim_create_user_command('FormatDisable', function(args)
-      vim.g.autoformat_on_save = true
-      vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), vim.log.levels.INFO)
-    end, {
-      desc = 'Disable autoformat-on-save',
-    })
-    -- enable
-    vim.api.nvim_create_user_command('FormatEnable', function()
-      vim.g.autoformat_on_save = false
-      vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), vim.log.levels.INFO)
-    end, {
-      desc = 'Enable autoformat-on-save',
-    })
-    -- toggle
-    vim.api.nvim_create_user_command('FormatToggle', function(args)
-      local log_level = (vim.g.autoformat_on_save and vim.log.levels.WARN or vim.log.levels.INFO)
-      vim.g.autoformat_on_save = not vim.g.autoformat_on_save
-      vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), vim.log.levels.INFO)
-    end, {
-      desc = 'Toggle autoformat on save',
-    })
-    return opts
+    -- vim.api.nvim_create_user_command('FormatDisable', function(args)
+    --   vim.g.autoformat_on_save = true
+    --   vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), vim.log.levels.INFO)
+    -- end, {
+    --   desc = 'Disable autoformat-on-save',
+    -- })
+    -- -- enable
+    -- vim.api.nvim_create_user_command('FormatEnable', function()
+    --   vim.g.autoformat_on_save = false
+    --   vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), vim.log.levels.INFO)
+    -- end, {
+    --   desc = 'Enable autoformat-on-save',
+    -- })
+    -- -- toggle
+    -- vim.api.nvim_create_user_command('FormatToggle', function(args)
+    --   local log_level = (vim.g.autoformat_on_save and vim.log.levels.WARN or vim.log.levels.INFO)
+    --   vim.g.autoformat_on_save = not vim.g.autoformat_on_save
+    --   vim.notify('set autoformat on save to ' .. tostring(not vim.g.autoformat_on_save), vim.log.levels.INFO)
+    -- end, {
+    --   desc = 'Toggle autoformat on save',
+    -- })
+    -- return opts
+  end,
+  setup = function()
+    require('conform').formatters.black = {
+      args = { '--lime-length', '130' },
+    }
   end,
 }
