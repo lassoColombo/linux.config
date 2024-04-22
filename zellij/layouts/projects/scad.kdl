@@ -13,9 +13,9 @@ layout name="config" {
         children
         pane size=1 borderless=true {
             plugin location="file:./.config/zellij/plugins/zjstatus.wasm" {
-                format_left   "#[fg=#7aa2f7,bold]{session}"
+                format_left   "{mode} "
                 format_center "{tabs}"
-                format_right  "{mode} "
+                format_right  "#[fg=#7aa2f7,bold]{session}"
                 format_space  ""
 
                 border_enabled  "true"
