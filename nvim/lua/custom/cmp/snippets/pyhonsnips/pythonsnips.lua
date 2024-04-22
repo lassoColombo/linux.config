@@ -5,6 +5,7 @@ u.ls.add_snippets(
   u.concat(
     require 'custom.cmp.snippets.pyhonsnips.pprint',
     require 'custom.cmp.snippets.pyhonsnips.docs',
-    require 'custom.cmp.snippets.pyhonsnips.conditionals'
+    require 'custom.cmp.snippets.pyhonsnips.conditionals',
+    require 'custom.cmp.snippets.pyhonsnips.dunders'
   )
 )
