@@ -53,6 +53,7 @@ return {
         end
         return { timeout_ms = 500, lsp_fallback = true }
       end,
+
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
@@ -66,6 +67,11 @@ return {
         -- javascript = { { "prettierd", "prettier" } },
       },
     }
+    -- puntual configuration
+    require('conform').formatters.black = {
+      args = { '--lime-length', '130' },
+    }
+    return opts
     -- :NOTE: old user commands to toggle autoformat
     --
     -- disable
@@ -90,11 +96,5 @@ return {
     -- end, {
     --   desc = 'Toggle autoformat on save',
     -- })
-    -- return opts
-  end,
-  setup = function()
-    require('conform').formatters.black = {
-      args = { '--lime-length', '130' },
-    }
   end,
 }

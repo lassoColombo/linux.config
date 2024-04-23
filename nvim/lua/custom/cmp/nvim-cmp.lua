@@ -71,7 +71,6 @@ return {
     -- }
 
     require 'custom.cmp.snippets.luasnips.luasnips'
-
     require 'custom.cmp.snippets.pyhonsnips.pythonsnips'
   end,
 }

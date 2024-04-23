@@ -29,6 +29,7 @@ return {
   parse = require('luasnip.util.parser').parse_snippet,
   ms = ls.multi_snippet,
   k = require('luasnip.nodes.key_indexer').new_key,
+  -- :FIXME: there must be a function in the vim stdlib that does that
   concat = function(...)
     local result = {}
     for _, tbl in ipairs { ... } do
