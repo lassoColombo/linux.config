@@ -10,10 +10,6 @@ return {
       autopush = false,
     }
     require('telescope').load_extension 'git_worktree'
-
-    -- vim.keymap.set('<leader>gws', function()
-    --   require('telescope').load_extension('git_worktree').git_worktrees()
-    -- end, { desc = '[G]it [W]orktree [S]witch' })
   end,
   keys = {
     {
