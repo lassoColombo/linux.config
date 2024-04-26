@@ -68,9 +68,9 @@ return {
       },
     }
     -- puntual configuration
-    require('conform').formatters.black = {
-      args = { '--lime-length', '130' },
-    }
+    -- require('conform').formatters.black = {
+    --   args = { '--lime-length', '130' },
+    -- }
     return opts
     -- :NOTE: old user commands to toggle autoformat
     --
