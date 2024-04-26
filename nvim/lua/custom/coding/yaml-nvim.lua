@@ -5,31 +5,43 @@ return {
     'nvim-treesitter/nvim-treesitter',
     'nvim-telescope/telescope.nvim', -- optional
   },
-  opts = {},
+  opts = function()
+    require('which-key').register {
+      ['<leader>Y'] = { name = '[Y]aml', _ = 'which_key_ignore' },
+      ['<leader>Yy'] = { name = '[Y]aml [Y]ank', _ = 'which_key_ignore' },
+    }
+  end,
   keys = {
     {
-      '<leader>cyv',
+      '<leader>Yv',
       '<cmd>YAMLView<cr>',
       mode = 'n',
-      desc = '[C]ode [Y]aml [V]view',
+      desc = '[Y]aml [V]view path',
       ft = 'yaml',
     },
     {
-      '<leader>cyy',
+      '<leader>Yyp',
       '<cmd>YAMLYank<cr>',
       mode = 'n',
-      desc = '[C]ode [Y]aml [Y]ank',
+      desc = '[Y]aml [Y]ank [P]ath',
       ft = 'yaml',
     },
     {
-      '<leader>cyY',
-      '<cmd>YAMLYank<cr>',
+      '<leader>Yyk',
+      '<cmd>YAMLYankKey<cr>',
       mode = 'n',
-      desc = '[C]ode [Y]aml [Y]ank path',
+      desc = '[Y]aml [Y]ank [K]ey',
       ft = 'yaml',
     },
     {
-      '<leader>cyt',
+      '<leader>Yyv',
+      '<cmd>YAMLYankValue<cr>',
+      mode = 'n',
+      desc = '[Y]aml [Y]ank [V]alue',
+      ft = 'yaml',
+    },
+    {
+      '<leader>Yt',
       '<cmd>YAMLTelescope<cr>',
       mode = 'n',
       desc = '[C]ode [Y]aml [T]elescope',

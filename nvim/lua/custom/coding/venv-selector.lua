@@ -14,6 +14,6 @@ return {
     return vim.tbl_deep_extend('force', opts, custom_opts)
   end,
   keys = {
-    { '<leader>clv', '<cmd>VenvSelect<cr>', desc = '[C]ode [L]SP select [V]env', ft = 'python' },
+    { '<leader>Lv', '<cmd>VenvSelect<cr>', desc = '[L]SP select [V]env', ft = 'python' },
   },
 }

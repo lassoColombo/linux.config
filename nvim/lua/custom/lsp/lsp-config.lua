@@ -22,7 +22,7 @@ return { -- LSP Configuration & Plugins
         end
 
         require('which-key').register {
-          ['<leader>l'] = { mode = { 'v', 'n' }, name = '[L]SP', _ = 'which_key_ignore' },
+          ['<leader>L'] = { mode = { 'v', 'n' }, name = '[L]SP', _ = 'which_key_ignore' },
         }
 
         map('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
