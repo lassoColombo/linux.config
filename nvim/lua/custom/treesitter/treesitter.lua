@@ -6,6 +6,15 @@ return { -- Highlight, edit, and navigate code
   },
   event = { 'BufReadPre', 'BufNewFile' },
   build = ':TSUpdate',
+
+  keys = {
+    {
+      '<leader>ctt',
+      '<cmd>InspectTree<CR>',
+      mode = 'n',
+      desc = '[C]ode [T]elescope [T]ree',
+    },
+  },
   config = function()
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
