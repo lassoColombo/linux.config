@@ -10,7 +10,6 @@ end
 
 return {
   function(node)
-    print 'asd'
     local text = helpers.node_text(node)
     if text ~= 'dict' then
       vim.notify('this is not a dict constructor 😥', vim.log.levels.WARN)
