@@ -1,47 +1,54 @@
 local helpers = require 'ts-node-action.helpers'
 
+local function indent(text, spaces)
+  return string.format('%s%s', string.rep(' ', spaces), text)
+end
+
 return {
   function(node)
     local query = vim.treesitter.query.parse(
       'python',
       [[
           (
-            (class_definition
+            (class_definition 
               name: (identifier) @classname
-              superclasses: (argument_list) @superclasses
-              body: (block) @body)
+              superclasses: (argument_list) @superclasses)
           )
         ]]
     )
-    local clname, superclasses, body = nil, nil, nil
+    local cldef, clname, superclasses = nil, nil, nil
     for _, matches, _ in query:iter_matches(node, 0) do
-      if #matches ~= 3 then
-        print '😥 something went wrong'
+      if #matches ~= 2 then
+        vim.notify('😥 something went wrong', vim.log.levels.WARN)
         return
       end
       clname = matches[1]
       superclasses = matches[2]
-      body = matches[3]
+      break
     end
 
-    local docstring = { '\t"""', string.format('\t%s ...', helpers.node_text(clname)) }
+    local _, indent_start, _, _ = node:range()
+    -- we want to indent by four spaces more with respect to the class definition
+    indent_start = indent_start + 3
+
+    local docstring = { indent('"""', indent_start), indent(string.format('%s ...', helpers.node_text(clname)), indent_start) }
 
     if superclasses then
-      table.insert(docstring, '\tIt inherits from:')
+      table.insert(docstring, indent('It inherits from:', indent_start))
       for i = 0, superclasses:named_child_count() - 1 do
         local class = helpers.node_text(superclasses:named_child(i))
-        table.insert(docstring, string.format('\t\t- %s: ...', class))
+        table.insert(docstring, indent(string.format('- %s: ...', class), indent_start + 4))
       end
     end
-    table.insert(docstring, '\t"""')
+    table.insert(docstring, indent('"""', indent_start))
     table.insert(docstring, '')
 
     -- :NOTE: this is here to mock the target node.
     -- if i were to give a real target node, it would be overridden
     local fake_node = {}
     fake_node.range = function()
-      local start_row, start_col, _, _ = body:range()
-      return start_row - 1, start_col - 4, start_row - 1, start_col - 4
+      local start_row, start_col, _, _ = superclasses:child(superclasses:child_count() - 1):range()
+      return start_row + 1, 0, start_row + 1, 0
     end
 
     return docstring, { target = fake_node }

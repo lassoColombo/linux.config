@@ -1,6 +1,5 @@
-vim.fn.setreg('', 'asdasd')
--- local function ClipCopy(val)
---   os.execute('echo "' .. val .. '" | xclip -selection clipboard ')
--- end
---
--- ClipCopy 'ciao'
+if string.match('asd', 'asd|qwe') then
+  print 'ciao'
+  -- If there is a match
+  -- Your code here
+end
