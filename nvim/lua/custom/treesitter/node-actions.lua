@@ -7,6 +7,7 @@ return {
     vim.keymap.set('n', '<leader>cta', require('ts-node-action').node_action, { desc = '[C]ode [T]reesitter [A]ctions' })
     require('ts-node-action').setup {
       python = require 'custom.treesitter.node-actions.python',
+      lua = require 'custom.treesitter.node-actions.lua-actions',
     }
   end,
   -- config = function()
