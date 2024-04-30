@@ -20,7 +20,7 @@ keybinds {
         bind "Alt t" { SwitchToMode "tmux"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
-        bind "Alt v" {
+        bind "Alt W" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij-workspace.wasm" {
                 floating true
             }
